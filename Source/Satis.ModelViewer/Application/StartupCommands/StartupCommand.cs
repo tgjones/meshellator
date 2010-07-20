@@ -67,7 +67,7 @@ namespace Satis.ModelViewer.Application.StartupCommands
 			if (dialog.ShowDialog() == true)
 			{
 				var document = ((GeminiApplication) System.Windows.Application.Current).Container.GetExportedValue<ModelDocument>(SatisContractNames.CompositionPoints.Workbench.Documents.ModelDocument);
-				document.Scene = Importer.ImportFile(dialog.FileName);
+				document.Scene = Meshellator.ImportFromFile(dialog.FileName);
 				LayoutManager.Value.ShowDocument(document, string.Empty);
 			}
 		}

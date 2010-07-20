@@ -72,11 +72,20 @@
     <Compile Include="AssetImporterAttribute.cs" />
     <Compile Include="IAssetImporter.cs" />
     <Compile Include="IAssetImporterMetadata.cs" />
-    <Compile Include="Importer.cs" />
+    <Compile Include="Meshellator.cs" />
     <Compile Include="AssetImporterBase.cs" />
-    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Mesh.cs" />
+    <Compile Include="Primitives\BezierPatch.cs" />
+    <Compile Include="Primitives\BezierPrimitiveTessellator.cs" />
+    <Compile Include="Primitives\BasicPrimitiveTessellator.cs" />
+    <Compile Include="Primitives\CubeTessellator.cs" />
+    <Compile Include="Primitives\TorusTessellator.cs" />
+    <Compile Include="Primitives\CylinderTessellator.cs" />
+    <Compile Include="Primitives\PrimitiveTessellator.cs" />
+    <Compile Include="Primitives\SphereTessellator.cs" />
+    <Compile Include="Primitives\TeapotTessellator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
   </ItemGroup>
@@ -85,6 +94,9 @@
       <Project>{0E5E31FF-D903-40BD-A787-7DA4E1D30138}</Project>
       <Name>Nexus %28Nexus\Nexus%29</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Importers\Autodesk3ds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

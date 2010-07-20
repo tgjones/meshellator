@@ -127,10 +127,6 @@
       <Project>{0E5E31FF-D903-40BD-A787-7DA4E1D30138}</Project>
       <Name>Nexus %28Nexus\Nexus%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Satis.Importers.Autodesk3ds\Satis.Importers.Autodesk3ds.csproj">
-      <Project>{901F3215-257C-4B2E-8D67-2209AD1A163D}</Project>
-      <Name>Satis.Importers.Autodesk3ds</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Satis\Satis.csproj">
       <Project>{CEBA7681-E968-46F6-8C87-7005FAA98267}</Project>
       <Name>Satis</Name>

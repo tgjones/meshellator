@@ -2,7 +2,6 @@ using System;
 using System.ComponentModel.Composition;
 using Gemini.Contracts;
 using Gemini.Contracts.Services.OutputService;
-using Satis.Logging;
 
 namespace Satis.ModelViewer.Services
 {

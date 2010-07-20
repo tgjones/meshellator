@@ -1,4 +1,4 @@
-namespace Satis.Logging
+namespace Satis
 {
 	public interface ILogger
 	{

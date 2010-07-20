@@ -47,10 +47,6 @@
     <Compile Include="Simple3dsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Satis.Importers.Autodesk3ds\Satis.Importers.Autodesk3ds.csproj">
-      <Project>{901F3215-257C-4B2E-8D67-2209AD1A163D}</Project>
-      <Name>Satis.Importers.Autodesk3ds</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Satis\Satis.csproj">
       <Project>{CEBA7681-E968-46F6-8C87-7005FAA98267}</Project>
       <Name>Satis</Name>
