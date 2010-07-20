@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="Satis.ModelViewer.Workbench.Documents.D3DImagePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:i="clr-namespace:System.Windows.Interop;assembly=PresentationCore">
+	<Grid>
+		<Image x:Name="D3DImage" Stretch="None">
+			<Image.Source>
+				<i:D3DImage x:Name="D3DImageSource" />
+			</Image.Source>
+		</Image>
+	</Grid>
+</UserControl>
