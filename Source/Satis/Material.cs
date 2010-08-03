@@ -17,5 +17,13 @@ namespace Satis
 		public int Shininess { get; set; }
 
 		public float Transparency { get; set; }
+
+		public Material()
+		{
+			AmbientColor = new Color(25, 25, 25);
+			DiffuseColor = Colors.Red;
+			SpecularColor = Colors.White;
+			Shininess = 8;
+		}
 	}
 }

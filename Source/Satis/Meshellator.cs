@@ -53,6 +53,11 @@ namespace Satis
 			return CreateFromPrimitive(new CylinderTessellator(radius, height, tessellationLevel));
 		}
 
+		public static Scene CreateFromPlane(int width, int length)
+		{
+			return CreateFromPrimitive(new PlaneTessellator(width, length));
+		}
+
 		public static Scene CreateFromSphere(float radius, int tessellationLevel)
 		{
 			return CreateFromPrimitive(new SphereTessellator(radius, tessellationLevel));
@@ -71,8 +76,24 @@ namespace Satis
 		private static Scene CreateFromPrimitive(BasicPrimitiveTessellator tessellator)
 		{
 			tessellator.Tessellate();
-			// TODO: create Scene from tessellation
-			throw new NotImplementedException();
+
+			Material material = new Material();
+			material.Name = "Default";
+			material.DiffuseColor = Colors.Blue;
+			material.SpecularColor = Colors.White;
+
+			Mesh mesh = new Mesh();
+			mesh.Positions.AddRange(tessellator.Positions);
+			mesh.Indices.AddRange(tessellator.Indices);
+			mesh.Normals.AddRange(tessellator.Normals);
+			mesh.Material = material;
+			mesh.PrimitiveTopology = tessellator.PrimitiveTopology;
+
+			Scene scene = new Scene { FileName = "[New Sphere]" };
+			scene.Materials.Add(material);
+			scene.Meshes.Add(mesh);
+
+			return scene;
 		}
 	}
 }

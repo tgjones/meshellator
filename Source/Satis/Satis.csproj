@@ -70,8 +70,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetImporterAttribute.cs" />
+    <Compile Include="Core\Animation.cs" />
+    <Compile Include="Core\Camera.cs" />
+    <Compile Include="Core\Light.cs" />
+    <Compile Include="Core\Materials\TextureMapMode.cs" />
+    <Compile Include="Core\SmoothingGroups.cs" />
+    <Compile Include="Generators\NormalLinesGenerator.cs" />
     <Compile Include="IAssetImporter.cs" />
     <Compile Include="IAssetImporterMetadata.cs" />
+    <Compile Include="Importers\Autodesk3ds\Util\Utility.cs" />
     <Compile Include="Meshellator.cs" />
     <Compile Include="AssetImporterBase.cs" />
     <Compile Include="ILogger.cs" />
@@ -80,12 +87,14 @@
     <Compile Include="Primitives\BezierPatch.cs" />
     <Compile Include="Primitives\BezierPrimitiveTessellator.cs" />
     <Compile Include="Primitives\BasicPrimitiveTessellator.cs" />
+    <Compile Include="Primitives\PlaneTessellator.cs" />
     <Compile Include="Primitives\CubeTessellator.cs" />
     <Compile Include="Primitives\TorusTessellator.cs" />
     <Compile Include="Primitives\CylinderTessellator.cs" />
     <Compile Include="Primitives\PrimitiveTessellator.cs" />
     <Compile Include="Primitives\SphereTessellator.cs" />
     <Compile Include="Primitives\TeapotTessellator.cs" />
+    <Compile Include="PrimitiveTopology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
   </ItemGroup>
@@ -96,7 +105,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Importers\Autodesk3ds\" />
+    <Folder Include="Importers\LightwaveObj\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

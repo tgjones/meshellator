@@ -7,6 +7,11 @@ namespace Satis.Primitives
 	{
 		private readonly float _size;
 
+		protected override Vector3D PositionOffset
+		{
+			get { return new Vector3D(0, _size / 2, 0); }
+		}
+
 		public TeapotTessellator(float size, int tessellationLevel)
 			: base(tessellationLevel)
 		{

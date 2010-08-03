@@ -8,6 +8,11 @@ namespace Satis.Primitives
 		private readonly float _radius;
 		private readonly float _thickness;
 
+		protected override Vector3D PositionOffset
+		{
+			get { return new Vector3D(0, _thickness / 2, 0); }
+		}
+
 		public TorusTessellator(float radius, float thickness, int tessellationLevel)
 			: base(tessellationLevel)
 		{
