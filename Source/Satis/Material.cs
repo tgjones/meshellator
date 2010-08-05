@@ -6,9 +6,9 @@ namespace Satis
 	{
 		public string Name { get; set; }
 
-		public Color AmbientColor { get; set; }
-		public Color DiffuseColor { get; set; }
-		public Color SpecularColor { get; set; }
+		public ColorRgbF AmbientColor { get; set; }
+		public ColorRgbF DiffuseColor { get; set; }
+		public ColorRgbF SpecularColor { get; set; }
 
 		public string DiffuseTextureName { get; set; }
 		public string SpecularTextureName { get; set; }
@@ -20,9 +20,9 @@ namespace Satis
 
 		public Material()
 		{
-			AmbientColor = new Color(25, 25, 25);
-			DiffuseColor = Colors.Red;
-			SpecularColor = Colors.White;
+			AmbientColor = new ColorRgbF(0.1f, 0.1f, 0.1f);
+			DiffuseColor = ColorsF.Red.ToColorRgbF();
+			SpecularColor = ColorsF.White.ToColorRgbF();
 			Shininess = 8;
 		}
 	}

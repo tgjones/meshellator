@@ -49,7 +49,7 @@ namespace Satis.ModelViewer.Framework.Rendering
 			_effect = new SimpleEffect(device)
 			{
 				World = world,
-				AmbientLightColor = new Color(25, 25, 25),
+				AmbientLightColor = new ColorRgbF(0.1f, 0.1f, 0.1f),
 				DiffuseColor = material.DiffuseColor,
 				SpecularColor = material.SpecularColor,
 				SpecularPower = material.Shininess

@@ -16,9 +16,7 @@ namespace Satis.ModelViewer.Framework.Rendering
 				Windowed = true,
 				BackBufferWidth = 1,
 				BackBufferHeight = 1,
-				BackBufferFormat = Format.Unknown,
-				Multisample = MultisampleType.FourSamples,
-				MultisampleQuality = 0
+				BackBufferFormat = Format.Unknown
 			};
 
 			Device = new DeviceEx(

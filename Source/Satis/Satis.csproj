@@ -70,15 +70,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetImporterAttribute.cs" />
-    <Compile Include="Core\Animation.cs" />
-    <Compile Include="Core\Camera.cs" />
-    <Compile Include="Core\Light.cs" />
-    <Compile Include="Core\Materials\TextureMapMode.cs" />
-    <Compile Include="Core\SmoothingGroups.cs" />
     <Compile Include="Generators\NormalLinesGenerator.cs" />
     <Compile Include="IAssetImporter.cs" />
     <Compile Include="IAssetImporterMetadata.cs" />
-    <Compile Include="Importers\Autodesk3ds\Util\Utility.cs" />
+    <Compile Include="Importers\LightwaveObj\LightWaveObjImporter.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Face.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\FaceType.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Group.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Material.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\CommentParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\DefaultParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\LineParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\LineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KaParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KdMapParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KdParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KsParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MaterialFileParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MaterialParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MtlLineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\NsParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\NormalParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\FaceParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\FreeFormParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\GroupParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\MaterialParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\ObjLineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\TextureCoordinateParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\VertexParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\TextureCoordinate.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Vertex.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\WavefrontObject.cs" />
     <Compile Include="Meshellator.cs" />
     <Compile Include="AssetImporterBase.cs" />
     <Compile Include="ILogger.cs" />
@@ -105,7 +127,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Importers\LightwaveObj\" />
+    <Folder Include="Importers\Autodesk3ds\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Importers\LightwaveObj\Licence.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

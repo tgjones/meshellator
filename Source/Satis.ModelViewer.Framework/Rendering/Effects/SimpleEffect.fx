@@ -177,7 +177,7 @@ technique RenderScene
 {
 	pass P0
 	{
-		CullMode = CCW;
+		CullMode = CW;
 
 		VertexShader = compile vs_3_0 VS();
 		PixelShader = compile ps_3_0 PS();

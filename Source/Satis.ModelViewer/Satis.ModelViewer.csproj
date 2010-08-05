@@ -73,9 +73,15 @@
     <Reference Include="AvalonDock.Themes">
       <HintPath>..\..\..\Gemini\Libraries\AvalonDock\AvalonDock.Themes.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Core, Version=1.1.0.49753, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL" />
-    <Reference Include="Caliburn.PresentationFramework, Version=1.1.0.49753, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Caliburn.Core">
+      <HintPath>..\..\Libraries\Caliburn\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework">
+      <HintPath>..\..\Libraries\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Libraries\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="SlimDX">
       <HintPath>..\..\Libraries\SlimDX\x86\SlimDX.dll</HintPath>
     </Reference>

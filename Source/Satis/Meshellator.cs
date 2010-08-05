@@ -79,8 +79,8 @@ namespace Satis
 
 			Material material = new Material();
 			material.Name = "Default";
-			material.DiffuseColor = Colors.Blue;
-			material.SpecularColor = Colors.White;
+			material.DiffuseColor = ColorsRgbF.Blue;
+			material.SpecularColor = ColorsRgbF.White;
 
 			Mesh mesh = new Mesh();
 			mesh.Positions.AddRange(tessellator.Positions);
@@ -94,6 +94,12 @@ namespace Satis
 			scene.Meshes.Add(mesh);
 
 			return scene;
+		}
+
+		public static bool IsSupportedFormat(string fileName)
+		{
+			string fileExtension = Path.GetExtension(fileName).ToUpper();
+			return Instance.AssetImporters.Any(l => l.Metadata.Extension.ToUpper() == fileExtension);
 		}
 	}
 }

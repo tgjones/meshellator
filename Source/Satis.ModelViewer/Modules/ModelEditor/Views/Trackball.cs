@@ -65,6 +65,7 @@ namespace Satis.ModelViewer.Workbench.Documents
 			_transform.Children.Add(_scale);
 			_transform.Children.Add(new RotateTransform3D(_rotation));
 
+			_currentOrientation = Quaternion.Identity;
 			_persistentOrientation = Quaternion.Identity;
 
 			ServiceLocator.Current.GetInstance<IPropertyGrid>().SelectedObject = _rotation;

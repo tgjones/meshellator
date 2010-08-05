@@ -23,9 +23,9 @@ namespace Satis.ModelViewer.Modules.Startup
 
 			Scene torusScene = Meshellator.CreateFromTorus(10, 1, 20);
 			Scene teapotScene = Meshellator.CreateFromTeapot(15, 20);
-			teapotScene.Materials[0].DiffuseColor = Colors.Green;
+			teapotScene.Materials[0].DiffuseColor = ColorsRgbF.Green;
 			Scene planeScene = Meshellator.CreateFromPlane(40, 40);
-			planeScene.Materials[0].DiffuseColor = Colors.Gray;
+			planeScene.Materials[0].DiffuseColor = ColorsRgbF.Gray;
 
 			torusScene.Meshes.Add(teapotScene.Meshes[0]);
 			torusScene.Meshes.Add(planeScene.Meshes[0]);

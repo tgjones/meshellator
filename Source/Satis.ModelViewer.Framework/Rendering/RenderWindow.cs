@@ -7,6 +7,7 @@ namespace Satis.ModelViewer.Framework.Rendering
 	public class RenderWindow
 	{
 		private readonly Device _device;
+		private readonly MultisampleType _multisampleType;
 
 		private bool _surfaceSettingsChanged;
 		private Surface _backBufferSurface;
@@ -43,13 +44,13 @@ namespace Satis.ModelViewer.Framework.Rendering
 				if (_backBufferSurface != null)
 					_backBufferSurface.Dispose();
 				_backBufferSurface = Surface.CreateRenderTarget(_device, Width, Height,
-					Format.X8R8G8B8, MultisampleType.FourSamples, 0, false);
+					Format.X8R8G8B8, _multisampleType, 0, false);
 
 				if (_depthStencilSurface != null)
 					_depthStencilSurface.Dispose();
 
 				_depthStencilSurface = Surface.CreateDepthStencil(_device, Width, Height,
-					Format.D24S8, MultisampleType.FourSamples, 0, true);
+					Format.D24S8, _multisampleType, 0, true);
 
 				_surfaceSettingsChanged = false;
 			}
@@ -65,6 +66,11 @@ namespace Satis.ModelViewer.Framework.Rendering
 			Height = height;
 			_device = device;
 			_surfaceSettingsChanged = true;
+
+			_multisampleType = new Direct3DEx().CheckDeviceMultisampleType(0, DeviceType.Hardware, Format.X8R8G8B8, true,
+			                                                               MultisampleType.FourSamples)
+			                   	? MultisampleType.FourSamples
+			                   	: MultisampleType.None;
 		}
 
 		protected void OnSizeChanged()

@@ -9,8 +9,7 @@ namespace Satis.ModelViewer.Modules.ModelEditor
 	{
 		public bool Handles(string path)
 		{
-			// TODO - change
-			return true;
+			return Meshellator.IsSupportedFormat(path);
 		}
 
 		public IExtendedPresenter Create(string path)

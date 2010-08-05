@@ -43,22 +43,22 @@ namespace Satis.ModelViewer.Framework.Rendering.Effects
 			set { SetValue("LightViewProjection", value.ToSlimDxMatrix()); }
 		}
 
-		public Color AmbientLightColor
+		public ColorRgbF AmbientLightColor
 		{
-			get { return GetValue<Vector3D>("AmbientLightColor").ToColorF().ToRgbColor(); }
-			set { SetValue("AmbientLightColor", value.ToVector3D()); }
+			get { return GetValue<ColorRgbF>("AmbientLightColor"); }
+			set { SetValue("AmbientLightColor", value); }
 		}
 
-		public Color DiffuseColor
+		public ColorRgbF DiffuseColor
 		{
-			get { return GetValue<Vector3D>("DiffuseColor").ToColorF().ToRgbColor(); }
-			set { SetValue("DiffuseColor", value.ToVector3D()); }
+			get { return GetValue<ColorRgbF>("DiffuseColor"); }
+			set { SetValue("DiffuseColor", value); }
 		}
 
-		public Color SpecularColor
+		public ColorRgbF SpecularColor
 		{
-			get { return GetValue<Vector3D>("SpecularColor").ToColorF().ToRgbColor(); }
-			set { SetValue("SpecularColor", value.ToVector3D()); }
+			get { return GetValue<ColorRgbF>("SpecularColor"); }
+			set { SetValue("SpecularColor", value); }
 		}
 
 		public float SpecularPower

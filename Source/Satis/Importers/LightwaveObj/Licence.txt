@@ -1,0 +1,4 @@
+﻿Code adapted from OBJ_IMPORT, a Java OBJ importer:
+http://www.pixelnerve.com/processing/libraries/objimport/
+
+This is published under the Lesser GPL.
