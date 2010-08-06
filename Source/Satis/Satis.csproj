@@ -73,7 +73,34 @@
     <Compile Include="Generators\NormalLinesGenerator.cs" />
     <Compile Include="IAssetImporter.cs" />
     <Compile Include="IAssetImporterMetadata.cs" />
-    <Compile Include="Importers\LightwaveObj\LightWaveObjImporter.cs" />
+    <Compile Include="Importers\Autodesk3ds\Autodesk3dsImporter.cs" />
+    <Compile Include="Importers\Autodesk3ds\Camera3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Color3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Decode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Exception3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Face3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\FaceMat3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\HideKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\HideTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Light3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Material3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Mesh3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\MorphKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\MorphTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\PKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\PTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\RotationKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\RotationTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Scene3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\SplineKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TexCoords3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TextDecode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Track3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Utils3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Vertex3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\XYZKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\XYZTrack3ds.cs" />
+    <Compile Include="Importers\LightwaveObj\LightwaveObjImporter.cs" />
     <Compile Include="Importers\LightwaveObj\Objects\Face.cs" />
     <Compile Include="Importers\LightwaveObj\Objects\FaceType.cs" />
     <Compile Include="Importers\LightwaveObj\Objects\Group.cs" />
@@ -126,10 +153,9 @@
       <Name>Nexus %28Nexus\Nexus%29</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Importers\Autodesk3ds\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Importers\Autodesk3ds\Licence.txt" />
     <Content Include="Importers\LightwaveObj\Licence.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,7 +6,7 @@ using Satis.Importers.LightwaveObj.Objects;
 namespace Satis.Importers.LightwaveObj
 {
 	[AssetImporter(".obj", "Lightwave OBJ")]
-	public class LightWaveObjImporter : AssetImporterBase
+	public class LightwaveObjImporter : AssetImporterBase
 	{
 		public override Scene ImportFile(FileStream fileStream, string fileName)
 		{
