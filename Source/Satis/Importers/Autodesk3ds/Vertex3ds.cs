@@ -5,24 +5,27 @@ namespace Satis.Importers.Autodesk3ds
  */
 	public class Vertex3ds
 	{
-		/**
-		 * X coordinate.
-		 */
+		/// <summary>
+		/// X coordinate.
+		/// </summary>
 		public float X;
 
-		/**
-		 * Y coordinate.
-		 */
+		/// <summary>
+		/// Y coordinate.
+		/// </summary>
 		public float Y;
 
-		/**
-		 * Z coordinate.
-		 */
+		/// <summary>
+		/// Z coordinate.
+		/// </summary>
 		public float Z;
 
-		/**
-		 * Constructor, initialising the Z,Y,Z coordinates.
-		 */
+		/// <summary>
+		/// Constructor, initialising the X,Y,Z coordinates.
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="z"></param>
 		public Vertex3ds(float x, float y, float z)
 		{
 			X = x;
@@ -30,12 +33,7 @@ namespace Satis.Importers.Autodesk3ds
 			Z = z;
 		}
 
-		/**
-		 * Returns a String object representing this Vertex3ds's value.
-		 * 
-		 * @return a string representation of this object.
-		 */
-		public string toString()
+		public override string ToString()
 		{
 			return "X Y Z:" +
 						 Utils3ds.floatToString(X, 14) +

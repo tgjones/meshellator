@@ -12,6 +12,7 @@ float3 LightSpecularColor = float3(1, 0.9607844, 0.8078432);
 float3 DiffuseColor = float3(1, 0, 0);
 float3 SpecularColor = float3(1, 1, 1);
 float SpecularPower = 8;
+float Alpha;
 
 float3 EyePosition;
 
@@ -159,7 +160,7 @@ float4 PS(PixelShaderInput input) : COLOR0
 	else
 		colour += diffuse * 0.6f; // Dim diffuse light to prevent surface appearing flat in shadow.
 
-	return float4(colour, 1);
+	return float4(colour, Alpha);
 }
 
 technique RenderShadowMap
@@ -177,7 +178,7 @@ technique RenderScene
 {
 	pass P0
 	{
-		CullMode = CW;
+		CullMode = CCW;
 
 		VertexShader = compile vs_3_0 VS();
 		PixelShader = compile ps_3_0 PS();

@@ -38,30 +38,10 @@ namespace Satis.Importers.Autodesk3ds
  */
 public class Mesh3ds
 {
-	/**
-	 * Texture mapping was done using Planar mapping.
-	 * This constant relates to the value returned by 
-	 * <code>texMapType()</code>.
-	 */
-	public const int PLANAR_MAP      = 0;
-
-	/**
-	 * Texture mapping was done using Cylindrical mapping.
-	 * This constant relates to the value returned by 
-	 * <code>texMapType()</code>.
-	 */
-	public const int CYLINDRICAL_MAP = 1;
-
-	/**
-	 * Texture mapping was done using Spherical mapping.
-	 * This constant relates to the value returned by 
-	 * <code>texMapType()</code>.
-	 */
-	public const int SPHERICAL_MAP   = 2;
-
-
-	// Mesh name
-	internal string mName = "";
+	/// <summary>
+	/// Gets or sets the name of this mesh.
+	/// </summary>
+	public string Name { get; internal set; }
 
 	// Vertices
 	internal Vertex3ds[] mVertex = new Vertex3ds[0];
@@ -75,8 +55,10 @@ public class Mesh3ds
 	// Texture mapping V tiling
 	internal float mTexVTile = 1.0f;
 
-	// Texture mapping type
-	internal int mTexMapType;
+	/// <summary>
+	/// Get or sets texture mapping type used while mapping this mesh.
+	/// </summary>
+	public TextureMappingMode3ds TextureMappingMode { get; internal set; }
 
 	// Face definitions
 	internal Face3ds[] mFace = new Face3ds[0];
@@ -120,22 +102,14 @@ public class Mesh3ds
 	// Hide spline track
 	internal HideTrack3ds mHideTrack = new HideTrack3ds();
 
-
+	public Mesh3ds()
+	{
+		Name = string.Empty;
+	}
 
 	internal void addFaceMat(FaceMat3ds fm)
 	{
 		mFaceMat.Add(fm);
-	}
-
-
-	/**
-	 * Get mesh name.
-	 *
-	 * @return mesh name
-	 */
-	public string name()
-	{
-		return mName;
 	}
 
 	/**
@@ -222,18 +196,6 @@ public class Mesh3ds
 	public float texVTile()
 	{
 		return mTexVTile;
-	}
-
-	/** 
-	 * Get texture mapping type used while mapping this mesh.
-	 * Use the constants <code>PLANAR_MAP</code>, 
-	 * <code>SYLINDRICAL_MAP</code> and <code>SPHERICAL_MAP</code>.
-	 *
-	 * @return texture mapping type
-	 */
-	public int texMapType()
-	{
-		return mTexMapType;
 	}
 
 	/** 

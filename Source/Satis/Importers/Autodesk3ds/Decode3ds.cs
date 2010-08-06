@@ -4,139 +4,150 @@ using System.IO;
 namespace Satis.Importers.Autodesk3ds
 {
 	class Decode3ds
-{
-	private TextDecode3ds mDecCont = null;
-	private int mDecLevel = 0;
-	private int mLevel = 0;
-	private string mNL = "\n";
-
-	public Decode3ds(TextDecode3ds decode, int level)
 	{
-		mDecCont = decode;
-		mDecLevel = level;
-		mDecCont.clear();
-		mNL = Environment.NewLine;
-	}
+		private TextDecode3ds mDecCont = null;
+		private int mDecLevel = 0;
+		private int mLevel = 0;
+		private string mNL = "\n";
 
-	public void enter()
-	{
-		mLevel++;
-	}
-
-	public void leave()
-	{
-		mLevel--;
-	}
-
-	public void println(string str)
-	{
-		for(int i=0; i < mLevel; i++) {
-			mDecCont.mText.Append("  ");
+		public Decode3ds(TextDecode3ds decode, int level)
+		{
+			mDecCont = decode;
+			mDecLevel = level;
+			mDecCont.clear();
+			mNL = Environment.NewLine;
 		}
-		mDecCont.mText.Append(str + mNL);
-	}
 
-	public void printBytes(BinaryReader reader, int n)
-	{
-		if(mDecLevel >= Scene3ds.DECODE_ALL) {
-			while(n > 0) {
-				for(int i=0; i < mLevel; i++) {
-					mDecCont.mText.Append("  ");
+		public void enter()
+		{
+			mLevel++;
+		}
+
+		public void leave()
+		{
+			mLevel--;
+		}
+
+		public void println(string str)
+		{
+			for (int i = 0; i < mLevel; i++)
+			{
+				mDecCont.mText.Append("  ");
+			}
+			mDecCont.mText.Append(str + mNL);
+		}
+
+		public void printBytes(BinaryReader reader, int n)
+		{
+			if (mDecLevel >= Scene3ds.DECODE_ALL)
+			{
+				while (n > 0)
+				{
+					for (int i = 0; i < mLevel; i++)
+					{
+						mDecCont.mText.Append("  ");
+					}
+					int run = n;
+					if (run > 20)
+					{
+						run = 20;
+					}
+					for (int i = 0; i < run; i++)
+					{
+						mDecCont.mText.Append(intToHex(reader.ReadByte(), 2) + " ");
+					}
+					n -= run;
+					mDecCont.mText.Append(mNL);
 				}
-				int run = n;
-				if(run > 20) {
-					run = 20;
-				}
-				for(int i=0; i < run; i++) {
-					mDecCont.mText.Append(intToHex(reader.ReadByte(), 2) + " ");
-				}
-				n -= run;
-				mDecCont.mText.Append(mNL);
 			}
 		}
-	}
 
-	public static string intToHex(int val, int digits)
-	{
-		char[] buf = new char[8];
-		char[] lut = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
+		public static string intToHex(int val, int digits)
+		{
+			char[] buf = new char[8];
+			char[] lut = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
-		int shift = (digits-1)*4;
-		for(int i=0; i < digits; i++) {
-			buf[i] = lut[ (val >> shift) & 0xf ];
-			shift -= 4;
+			int shift = (digits - 1) * 4;
+			for (int i = 0; i < digits; i++)
+			{
+				buf[i] = lut[(val >> shift) & 0xf];
+				shift -= 4;
+			}
+			return new string(buf, 0, digits);
 		}
-		return new string(buf, 0, digits);
-	}
 
-	public void printHead(int id, int length)
-	{		
-		string name = "UNKNOWN";
-		bool known = false;
-		for(int i=0; i < mChunkInfo.Length; i++) {
-			if(mChunkInfo[i].id == id) {
-				name  = mChunkInfo[i].name;
-				known = mChunkInfo[i].known;
-				break;
+		public void printHead(int id, int length)
+		{
+			string name = "UNKNOWN";
+			bool known = false;
+			for (int i = 0; i < mChunkInfo.Length; i++)
+			{
+				if (mChunkInfo[i].id == id)
+				{
+					name = mChunkInfo[i].name;
+					known = mChunkInfo[i].known;
+					break;
+				}
+			}
+			if ((known == true) || (mDecLevel >= Scene3ds.DECODE_USED_PARAMS))
+			{
+				println(name + "  id=0x" + intToHex(id, 4) + " length=" + length);
 			}
 		}
-		if((known == true) || (mDecLevel >= Scene3ds.DECODE_USED_PARAMS)) {
-			println(name + "  id=0x" + intToHex(id, 4) + " length=" + length);
+
+
+		private class ChunkInfo
+		{
+			internal bool known;
+			internal int id;
+			internal string name;
+
+			public ChunkInfo(bool known, int id, string name)
+			{
+				this.known = known;
+				this.id = id;
+				this.name = name;
+			}
 		}
-	}
 
-
-	private class ChunkInfo
-	{
-		internal bool known;
-		internal int     id;
-		internal string  name;
-
-		public ChunkInfo(bool known, int id, string name) {
-			this.known = known;
-			this.id    = id;
-			this.name  = name;
+		private enum ChunkType
+		{
+			CHUNK_M3DMAGIC = 0x4D4D,
+			CHUNK_MDATA = 0x3D3D,
+			CHUNK_MAT_ENTRY = 0xAFFF,
+			CHUNK_MAT_NAME = 0xA000,
+			CHUNK_NAMED_OBJECT = 0x4000,
+			CHUNK_N_TRI_OBJECT = 0x4100,
+			CHUNK_POINT_ARRAY = 0x4110,
+			CHUNK_TEX_VERTS = 0x4140,
+			CHUNK_MESH_TEXTURE_INFO = 0x4170,
+			CHUNK_MESH_MATRIX = 0x4160,
+			//		        CHUNK_MESH_COLOR          = 0x4165,
+			CHUNK_FACE_ARRAY = 0x4120,
+			CHUNK_MSH_MAT_GROUP = 0x4130,
+			CHUNK_SMOOTH_GROUP = 0x4150,
+			CHUNK_N_CAMERA = 0x4700,
+			//		        CHUNK_CAM_SEE_CONE        = 0x4710,
+			CHUNK_CAM_RANGES = 0x4720,
+			CHUNK_KFDATA = 0xB000,
+			CHUNK_KFSEG = 0xB008,
+			CHUNK_OBJECT_NODE_TAG = 0xB002,
+			CHUNK_NODE_ID = 0xB030,
+			CHUNK_NODE_HDR = 0xB010,
+			CHUNK_PIVOT = 0xB013,
+			CHUNK_POS_TRACK_TAG = 0xB020,
+			CHUNK_ROT_TRACK_TAG = 0xB021,
+			CHUNK_SCL_TRACK_TAG = 0xB022,
+			CHUNK_MORPH_TRACK_TAG = 0xB026,
+			CHUNK_HIDE_TRACK_TAG = 0xB029,
+			CHUNK_TARGET_NODE_TAG = 0xB004,
+			CHUNK_CAMERA_NODE_TAG = 0xB003,
+			CHUNK_FOV_TRACK_TAG = 0xB023,
+			CHUNK_ROLL_TRACK_TAG = 0xB024
+			//		    CHUNK_AMBIENT_NODE_TAG        = 0xB001;
 		}
-	}
 
-	private enum ChunkType
-	{
-		CHUNK_M3DMAGIC                    = 0x4D4D,
-		  CHUNK_MDATA                     = 0x3D3D,
-		    CHUNK_MAT_ENTRY               = 0xAFFF,
-		      CHUNK_MAT_NAME              = 0xA000,
-		    CHUNK_NAMED_OBJECT            = 0x4000,
-		      CHUNK_N_TRI_OBJECT          = 0x4100,
-		        CHUNK_POINT_ARRAY         = 0x4110,
-		        CHUNK_TEX_VERTS           = 0x4140,
-		        CHUNK_MESH_TEXTURE_INFO   = 0x4170,
-		        CHUNK_MESH_MATRIX         = 0x4160,
-//		        CHUNK_MESH_COLOR          = 0x4165,
-		        CHUNK_FACE_ARRAY          = 0x4120,
-		          CHUNK_MSH_MAT_GROUP     = 0x4130,
-		          CHUNK_SMOOTH_GROUP      = 0x4150,
-		      CHUNK_N_CAMERA              = 0x4700,
-//		        CHUNK_CAM_SEE_CONE        = 0x4710,
-		        CHUNK_CAM_RANGES          = 0x4720,
-		  CHUNK_KFDATA                    = 0xB000,
-		    CHUNK_KFSEG                   = 0xB008,
-		    CHUNK_OBJECT_NODE_TAG         = 0xB002,
-		      CHUNK_NODE_ID               = 0xB030,
-		      CHUNK_NODE_HDR              = 0xB010,
-		      CHUNK_PIVOT                 = 0xB013,
-		      CHUNK_POS_TRACK_TAG         = 0xB020,
-		      CHUNK_ROT_TRACK_TAG         = 0xB021,
-		      CHUNK_SCL_TRACK_TAG         = 0xB022,
-		      CHUNK_MORPH_TRACK_TAG       = 0xB026,
-		      CHUNK_HIDE_TRACK_TAG        = 0xB029,
-		    CHUNK_TARGET_NODE_TAG         = 0xB004,
-		    CHUNK_CAMERA_NODE_TAG         = 0xB003,
-		      CHUNK_FOV_TRACK_TAG         = 0xB023,
-		      CHUNK_ROLL_TRACK_TAG        = 0xB024
-//		    CHUNK_AMBIENT_NODE_TAG        = 0xB001;
-	}
-
-	private static readonly ChunkInfo[] mChunkInfo =
+		private static readonly ChunkInfo[] mChunkInfo =
 	{ 
 		// 3DS File Chunk IDs
 
@@ -445,7 +456,5 @@ namespace Satis.Importers.Autodesk3ds
 		new ChunkInfo(true, (int) ChunkType.CHUNK_HIDE_TRACK_TAG,    "HIDE_TRACK_TAG"        ),
 		new ChunkInfo(true, (int) ChunkType.CHUNK_NODE_ID,           "NODE_ID"               )
 	};
-
-
-}
+	}
 }

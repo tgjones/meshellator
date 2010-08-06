@@ -67,6 +67,12 @@ namespace Satis.ModelViewer.Framework.Rendering.Effects
 			set { SetValue("SpecularPower", value); }
 		}
 
+		public float Alpha
+		{
+			get { return GetValue<float>("Alpha"); }
+			set { SetValue("Alpha", value); }
+		}
+
 		public bool ShadowsEnabled
 		{
 			get { return GetValue<bool>("ShadowsEnabled"); }

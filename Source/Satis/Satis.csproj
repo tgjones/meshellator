@@ -95,6 +95,7 @@
     <Compile Include="Importers\Autodesk3ds\SplineKey3ds.cs" />
     <Compile Include="Importers\Autodesk3ds\TexCoords3ds.cs" />
     <Compile Include="Importers\Autodesk3ds\TextDecode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TextureMappingMode3ds.cs" />
     <Compile Include="Importers\Autodesk3ds\Track3ds.cs" />
     <Compile Include="Importers\Autodesk3ds\Utils3ds.cs" />
     <Compile Include="Importers\Autodesk3ds\Vertex3ds.cs" />

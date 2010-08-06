@@ -1,3 +1,6 @@
+using System;
+using Nexus;
+
 namespace Satis.Importers.Autodesk3ds
 {
 	/**
@@ -60,5 +63,9 @@ namespace Satis.Importers.Autodesk3ds
 			return mBlue;
 		}
 
+		public ColorRgbF ToColorRgbF()
+		{
+			return new ColorRgbF(red(), green(), blue());
+		}
 	}
 }

@@ -30,6 +30,8 @@ namespace Satis.ModelViewer.Framework.Rendering
 
 		public Mesh SourceMesh { get; private set; }
 
+		public bool Opaque { get; private set; }
+
 		#endregion
 
 		#region Constructor
@@ -52,9 +54,11 @@ namespace Satis.ModelViewer.Framework.Rendering
 				AmbientLightColor = new ColorRgbF(0.1f, 0.1f, 0.1f),
 				DiffuseColor = material.DiffuseColor,
 				SpecularColor = material.SpecularColor,
-				SpecularPower = material.Shininess
+				SpecularPower = material.Shininess,
+				Alpha = material.Transparency
 			};
 			_effect.CurrentTechnique = "RenderScene";
+			Opaque = (material.Transparency == 1.0f);
 		}
 
 		#endregion

@@ -69,8 +69,24 @@ namespace Satis.ModelViewer.Framework.Rendering
 
 		internal void DrawInternal(RenderSettings settings, IEnumerable<IDecorator> decorators)
 		{
-			foreach (ModelMesh modelMesh in Meshes)
+			_device.SetRenderState(RenderState.ZEnable, true);
+			_device.SetRenderState(RenderState.ZWriteEnable, true);
+
+			// Draw opaque objects first.
+			foreach (ModelMesh modelMesh in Meshes.Where(m => m.Opaque))
 				modelMesh.Draw(_vertexDeclaration, settings, decorators);
+
+			_device.SetRenderState(RenderState.ZWriteEnable, false);
+
+			// Draw transparent objects. TODO: Sort by distance from camera and draw from back to front.
+			_device.SetRenderState(RenderState.AlphaBlendEnable, true);
+			_device.SetRenderState(RenderState.SourceBlend, Blend.SourceAlpha);
+			_device.SetRenderState(RenderState.DestinationBlend, Blend.InverseSourceAlpha);
+			foreach (ModelMesh modelMesh in Meshes.Where(m => !m.Opaque))
+				modelMesh.Draw(_vertexDeclaration, settings, decorators);
+			_device.SetRenderState(RenderState.AlphaBlendEnable, false);
+
+			_device.SetRenderState(RenderState.ZWriteEnable, true);
 		}
 
 		#endregion
