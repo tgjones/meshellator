@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CEBA7681-E968-46F6-8C87-7005FAA98267}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Meshellator</RootNamespace>
+    <AssemblyName>Meshellator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\Satis.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Satis.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssetImporterAttribute.cs" />
+    <Compile Include="Generators\NormalLinesGenerator.cs" />
+    <Compile Include="IAssetImporter.cs" />
+    <Compile Include="IAssetImporterMetadata.cs" />
+    <Compile Include="Importers\Autodesk3ds\Autodesk3dsImporter.cs" />
+    <Compile Include="Importers\Autodesk3ds\Camera3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Color3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Decode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Exception3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Face3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\FaceMat3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\HideKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\HideTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Light3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Material3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Mesh3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\MorphKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\MorphTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\PKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\PTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\RotationKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\RotationTrack3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Scene3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\SplineKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TexCoords3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TextDecode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\TextureMappingMode3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Track3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Utils3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\Vertex3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\XYZKey3ds.cs" />
+    <Compile Include="Importers\Autodesk3ds\XYZTrack3ds.cs" />
+    <Compile Include="Importers\LightwaveObj\LightwaveObjImporter.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Face.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\FaceType.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Group.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Material.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\CommentParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\DefaultParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\LineParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\LineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KaParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KdMapParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KdParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\KsParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MaterialFileParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MaterialParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\MtlLineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Mtl\NsParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\NormalParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\FaceParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\FreeFormParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\GroupParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\MaterialParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\ObjLineParserFactory.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\TextureCoordinateParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Parsers\Obj\VertexParser.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\TextureCoordinate.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\Vertex.cs" />
+    <Compile Include="Importers\LightwaveObj\Objects\WavefrontObject.cs" />
+    <Compile Include="MeshellatorLoader.cs" />
+    <Compile Include="AssetImporterBase.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="Material.cs" />
+    <Compile Include="Mesh.cs" />
+    <Compile Include="Primitives\BezierPatch.cs" />
+    <Compile Include="Primitives\BezierPrimitiveTessellator.cs" />
+    <Compile Include="Primitives\BasicPrimitiveTessellator.cs" />
+    <Compile Include="Primitives\PlaneTessellator.cs" />
+    <Compile Include="Primitives\CubeTessellator.cs" />
+    <Compile Include="Primitives\TorusTessellator.cs" />
+    <Compile Include="Primitives\CylinderTessellator.cs" />
+    <Compile Include="Primitives\PrimitiveTessellator.cs" />
+    <Compile Include="Primitives\SphereTessellator.cs" />
+    <Compile Include="Primitives\TeapotTessellator.cs" />
+    <Compile Include="PrimitiveTopology.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Nexus\src\Nexus\Nexus.csproj">
+      <Project>{0E5E31FF-D903-40BD-A787-7DA4E1D30138}</Project>
+      <Name>Nexus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Importers\Autodesk3ds\Licence.txt" />
+    <Content Include="Importers\LightwaveObj\Licence.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

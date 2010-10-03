@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Meshellator.Viewer.Modules.ModelExplorer.Views.ExplorerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cal="http://www.caliburnproject.org">
+	<UserControl.Resources>
+		<Style TargetType="{x:Type TreeViewItem}"
+               x:Key="TreeViewItemStyle">
+			<Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+			<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+			<Setter Property="FontWeight" Value="Normal" />
+			<Style.Triggers>
+				<Trigger Property="IsSelected" Value="True">
+					<Setter Property="FontWeight" Value="Bold" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+	</UserControl.Resources>
+
+	<TreeView ItemsSource="{Binding Scenes}"
+              ItemContainerStyle="{StaticResource TreeViewItemStyle}" />
+</UserControl>
