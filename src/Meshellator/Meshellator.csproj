@@ -59,6 +59,10 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nexus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Nexus\Nexus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -147,12 +151,6 @@
     <Compile Include="PrimitiveTopology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Nexus\src\Nexus\Nexus.csproj">
-      <Project>{0E5E31FF-D903-40BD-A787-7DA4E1D30138}</Project>
-      <Name>Nexus</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Importers\Autodesk3ds\Licence.txt" />

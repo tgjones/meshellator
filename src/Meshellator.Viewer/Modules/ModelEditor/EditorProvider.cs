@@ -10,12 +10,12 @@ namespace Meshellator.Viewer.Modules.ModelEditor
 	{
 		public bool Handles(string path)
 		{
-			return Meshellator.IsSupportedFormat(path);
+			return MeshellatorLoader.IsSupportedFormat(path);
 		}
 
 		public IExtendedPresenter Create(string path)
 		{
-			return new ModelEditorViewModel(new SceneViewModel(Meshellator.ImportFromFile(path)), Path.GetFileName(path));
+			return new ModelEditorViewModel(new SceneViewModel(MeshellatorLoader.ImportFromFile(path)), Path.GetFileName(path));
 		}
 	}
 }

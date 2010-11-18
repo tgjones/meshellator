@@ -70,32 +70,41 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AvalonDock">
+      <HintPath>..\..\lib\Gemini\AvalonDock.dll</HintPath>
+    </Reference>
     <Reference Include="AvalonDock.Themes">
-      <HintPath>..\..\..\Gemini\Libraries\AvalonDock\AvalonDock.Themes.dll</HintPath>
+      <HintPath>..\..\lib\Gemini\AvalonDock.Themes.dll</HintPath>
     </Reference>
     <Reference Include="Caliburn.Core">
-      <HintPath>..\..\Libraries\Caliburn\Caliburn.Core.dll</HintPath>
+      <HintPath>..\..\lib\Caliburn\Caliburn.Core.dll</HintPath>
     </Reference>
     <Reference Include="Caliburn.PresentationFramework">
-      <HintPath>..\..\Libraries\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
+      <HintPath>..\..\lib\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Gemini, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Gemini.dll</HintPath>
+    <Reference Include="Caliburn.StructureMap">
+      <HintPath>..\..\lib\Caliburn\Caliburn.StructureMap.dll</HintPath>
     </Reference>
-    <Reference Include="Gemini.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Gemini.Framework.dll</HintPath>
+    <Reference Include="Fluent">
+      <HintPath>..\..\lib\Gemini\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="Gemini">
+      <HintPath>..\..\lib\Gemini\Gemini.dll</HintPath>
+    </Reference>
+    <Reference Include="Gemini.Framework">
+      <HintPath>..\..\lib\Gemini\Gemini.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\Libraries\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\lib\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Nexus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Nexus.dll</HintPath>
+    <Reference Include="Nexus">
+      <HintPath>..\..\lib\Nexus\Nexus.dll</HintPath>
     </Reference>
     <Reference Include="SlimDX">
       <HintPath>..\..\Libraries\SlimDX\x86\SlimDX.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\lib\Caliburn\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -113,7 +122,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WPG">
-      <HintPath>..\..\Libraries\WPG\WPG.dll</HintPath>
+      <HintPath>..\..\lib\WPG\WPG.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

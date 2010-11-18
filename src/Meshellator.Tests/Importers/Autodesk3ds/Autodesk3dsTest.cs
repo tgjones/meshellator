@@ -11,7 +11,7 @@ namespace Meshellator.Tests
 		[Test]
 		public void CanImport3dsFile()
 		{
-			Scene scene = Meshellator.ImportFromFile(@"Models\3ds\85-nissan-fairlady.3ds");
+			Scene scene = MeshellatorLoader.ImportFromFile(@"Models\3ds\85-nissan-fairlady.3ds");
 		}
 	}
 }

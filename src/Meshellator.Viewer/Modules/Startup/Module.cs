@@ -22,10 +22,10 @@ namespace Meshellator.Viewer.Modules.Startup
 
 			shell.Title = "Meshellator Viewer";
 
-			Scene torusScene = Meshellator.CreateFromTorus(10, 1, 20);
-			Scene teapotScene = Meshellator.CreateFromTeapot(15, 20);
+			Scene torusScene = MeshellatorLoader.CreateFromTorus(10, 1, 20);
+			Scene teapotScene = MeshellatorLoader.CreateFromTeapot(15, 20);
 			teapotScene.Materials[0].DiffuseColor = ColorsRgbF.Green;
-			Scene planeScene = Meshellator.CreateFromPlane(40, 40);
+			Scene planeScene = MeshellatorLoader.CreateFromPlane(40, 40);
 			planeScene.Materials[0].DiffuseColor = ColorsRgbF.Gray;
 
 			torusScene.Meshes.Add(teapotScene.Meshes[0]);
@@ -65,12 +65,12 @@ namespace Meshellator.Viewer.Modules.Startup
 
 		private static IEnumerable<IResult> NewSphere()
 		{
-			yield return Show.Document(new ModelEditorViewModel(new SceneViewModel(Meshellator.CreateFromSphere(10, 10)), "[New Sphere]"));
+			yield return Show.Document(new ModelEditorViewModel(new SceneViewModel(MeshellatorLoader.CreateFromSphere(10, 10)), "[New Sphere]"));
 		}
 
 		private static IEnumerable<IResult> NewTeapot()
 		{
-			yield return Show.Document(new ModelEditorViewModel(new SceneViewModel(Meshellator.CreateFromTeapot(10, 10)), "[New Teapot]"));
+			yield return Show.Document(new ModelEditorViewModel(new SceneViewModel(MeshellatorLoader.CreateFromTeapot(10, 10)), "[New Teapot]"));
 		}
 
 		private static IEnumerable<IResult> SetFillModeSolid(bool isChecked)
