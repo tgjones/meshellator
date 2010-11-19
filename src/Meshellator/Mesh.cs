@@ -7,6 +7,7 @@ namespace Meshellator
 	{
 		private AxisAlignedBoundingBox? _bounds;
 
+		public string Name { get; set; }
 		public Point3DCollection Positions { get; private set; }
 		public Vector3DCollection Normals { get; private set; }
 		public Point3DCollection TextureCoordinates { get; private set; }

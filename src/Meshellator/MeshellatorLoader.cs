@@ -3,6 +3,7 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Meshellator.Primitives;
 using Nexus;
 
@@ -24,6 +25,7 @@ namespace Meshellator
 		private MeshellatorLoader()
 		{
 			AggregateCatalog catalog = new AggregateCatalog();
+			catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
 			catalog.Catalogs.Add(new DirectoryCatalog(".", "*.dll"));
 			catalog.Catalogs.Add(new DirectoryCatalog(".", "*.exe"));
 
@@ -35,10 +37,11 @@ namespace Meshellator
 		{
 			// Look for importer which handles this file extension.
 			string fileExtension = Path.GetExtension(fileName).ToUpper();
-			IAssetImporter assetImporter = Instance.AssetImporters.SingleOrDefault(l => l.Metadata.Extension.ToUpper() == fileExtension).Value;
-			if (assetImporter == null)
+			var lazyAssetImporter = Instance.AssetImporters.SingleOrDefault(l => l.Metadata.Extension.ToUpper() == fileExtension);
+			if (lazyAssetImporter == null)
 				throw new ArgumentException("Could not find importer for extension '" + fileExtension + "'");
 
+			IAssetImporter assetImporter = lazyAssetImporter.Value;
 			FileStream fileStream = File.OpenRead(fileName);
 			return assetImporter.ImportFile(fileStream, fileName);
 		}

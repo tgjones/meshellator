@@ -23,6 +23,7 @@ namespace Meshellator.Importers.Autodesk3ds
 			Material defaultMaterial = new Material
 			{
 				Name = "Default",
+				FileName = fileName,
 				DiffuseColor = ColorsRgbF.Gray,
 				SpecularColor = ColorsRgbF.White,
 				Shininess = 64
@@ -34,12 +35,14 @@ namespace Meshellator.Importers.Autodesk3ds
 				Material material = new Material
 				{
 					Name = material3ds.name(),
+					FileName = fileName,
 					DiffuseColor = material3ds.diffuse().ToColorRgbF(),
 					AmbientColor = material3ds.ambient().ToColorRgbF(),
 					SpecularColor = material3ds.specular().ToColorRgbF(),
-					Transparency = material3ds.transparency(),
-					Shininess = (int) material3ds._shininess
+					Transparency = material3ds.transparency()
 				};
+				if ((int) material3ds._shininess != 0)
+					material.Shininess = (int) material3ds._shininess;
 				result.Materials.Add(material);
 			}
 
@@ -87,7 +90,10 @@ namespace Meshellator.Importers.Autodesk3ds
 			{
 				Mesh3ds m = scene.Meshes.ElementAt(i);
 				// Alloc memory
-				Mesh mesh = new Mesh();
+				Mesh mesh = new Mesh
+				{
+					Name = m.Name
+				};
 				result.Meshes.Add(mesh);
 
 				//mesh._numTexCoords = 0;

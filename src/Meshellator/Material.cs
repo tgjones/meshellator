@@ -5,6 +5,7 @@ namespace Meshellator
 	public class Material
 	{
 		public string Name { get; set; }
+		public string FileName { get; set; }
 
 		public ColorRgbF AmbientColor { get; set; }
 		public ColorRgbF DiffuseColor { get; set; }
@@ -21,9 +22,10 @@ namespace Meshellator
 		public Material()
 		{
 			AmbientColor = new ColorRgbF(0.1f, 0.1f, 0.1f);
-			DiffuseColor = ColorsRgbF.Red;
+			DiffuseColor = ColorsRgbF.White;
 			SpecularColor = ColorsRgbF.White;
-			Shininess = 8;
+			Shininess = 16;
+			Transparency = 1;
 		}
 	}
 }

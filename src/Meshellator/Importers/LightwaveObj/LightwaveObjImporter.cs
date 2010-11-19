@@ -32,7 +32,11 @@ namespace Meshellator.Importers.LightwaveObj
 				Material material;
 				if (gm != null)
 				{
-					material = new Material();
+					material = new Material
+					{
+						Name = gm.Name,
+						FileName = gm.FileName
+					};
 					// material.Ambient
 
 					if (!string.IsNullOrEmpty(gm.TextureName))
@@ -52,7 +56,8 @@ namespace Meshellator.Importers.LightwaveObj
 					material = defaultMaterial;
 				}
 				mesh.Material = material;
-				scene.Materials.Add(material);
+				if (!scene.Materials.Contains(material))
+					scene.Materials.Add(material);
 
 				// Currently this is not utilising indices.
 				int counter = 0;

@@ -31,7 +31,7 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Mtl
 			while ((currentLine = reader.ReadLine()) != null)
 			{
 				LineParser parser = parserFactory.GetLineParser(currentLine);
-				parser.Parse();
+				parser.Parse(filename);
 				parser.IncorporateResults(_object);
 			}
 

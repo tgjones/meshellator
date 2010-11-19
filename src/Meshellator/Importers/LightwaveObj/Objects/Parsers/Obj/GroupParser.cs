@@ -6,7 +6,9 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 
 		public override void Parse()
 		{
-			_newGroup = new Group(Words[1]);
+			// Name is optional, apparently.
+			string name = (Words.Length > 1) ? Words[1] : null;
+			_newGroup = new Group(name);
 		}
 
 		public override void IncorporateResults(WavefrontObject wavefrontObject)
@@ -15,7 +17,6 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 				wavefrontObject.CurrentGroup.Pack();
 
 			wavefrontObject.Groups.Add(_newGroup);
-			wavefrontObject.GroupsDirectAccess.Add(_newGroup.Name, _newGroup);
 
 			wavefrontObject.CurrentGroup = _newGroup;
 		}

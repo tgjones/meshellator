@@ -11,7 +11,6 @@ namespace Meshellator.Importers.LightwaveObj.Objects
 		public List<Vertex> Normals { get; set; }
 		public List<TextureCoordinate> Textures { get; set; }
 		public List<Group> Groups { get; set; }
-		public Dictionary<string, Group> GroupsDirectAccess { get; set; }
 		public Dictionary<string, Material> Materials { get; set; }
 		public string FileName { get; set; }
 
@@ -30,7 +29,6 @@ namespace Meshellator.Importers.LightwaveObj.Objects
 			Normals = new List<Vertex>();
 			Textures = new List<TextureCoordinate>();
 			Groups = new List<Group>();
-			GroupsDirectAccess = new Dictionary<string, Group>();
 			Materials = new Dictionary<string, Material>();
 
 			FileName = fileName;
