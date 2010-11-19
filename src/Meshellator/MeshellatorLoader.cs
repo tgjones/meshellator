@@ -26,8 +26,8 @@ namespace Meshellator
 		{
 			AggregateCatalog catalog = new AggregateCatalog();
 			catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
-			catalog.Catalogs.Add(new DirectoryCatalog(".", "*.dll"));
-			catalog.Catalogs.Add(new DirectoryCatalog(".", "*.exe"));
+			//catalog.Catalogs.Add(new DirectoryCatalog(".", "*.dll"));
+			//catalog.Catalogs.Add(new DirectoryCatalog(".", "*.exe"));
 
 			_container = new CompositionContainer(catalog);
 			_container.ComposeParts(this);
@@ -90,7 +90,6 @@ namespace Meshellator
 			mesh.Indices.AddRange(tessellator.Indices);
 			mesh.Normals.AddRange(tessellator.Normals);
 			mesh.Material = material;
-			mesh.PrimitiveTopology = tessellator.PrimitiveTopology;
 
 			Scene scene = new Scene { FileName = "[New Sphere]" };
 			scene.Materials.Add(material);

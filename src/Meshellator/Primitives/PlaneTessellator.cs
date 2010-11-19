@@ -1,3 +1,4 @@
+using Meshellator.Util;
 using Nexus;
 
 namespace Meshellator.Primitives
@@ -10,11 +11,6 @@ namespace Meshellator.Primitives
 		protected override Vector3D PositionOffset
 		{
 			get { return new Vector3D(-_width / 2f, 0, -_length / 2f); }
-		}
-
-		public override PrimitiveTopology PrimitiveTopology
-		{
-			get { return PrimitiveTopology.TriangleStrip; }
 		}
 
 		public PlaneTessellator(int width, int length)
@@ -32,7 +28,7 @@ namespace Meshellator.Primitives
 					AddVertex(new Point3D(x, 0, (_length - 1) - z), normal); // Invert z so that winding order is correct.
 
 			// Create indices.
-			for (int z = 0; z < _length; ++z)
+			for (int z = 0; z < _length - 1; ++z)
 				for (int x = 0; x < _width; ++x)
 				{
 					// Create vertex for degenerate triangle.
@@ -46,6 +42,12 @@ namespace Meshellator.Primitives
 					if (x == _width - 1 && z < _length - 2)
 						AddIndex(((z + 1) * _width) + x);
 				}
+
+			// It's easiest to define the plane in terms of a triangle strip,
+			// and then convert it.
+			Int32Collection newIndices = MeshUtility.ConvertTriangleStripToTriangleList(Indices);
+			Indices.Clear();
+			Indices.AddRange(newIndices);
 		}
 	}
 }

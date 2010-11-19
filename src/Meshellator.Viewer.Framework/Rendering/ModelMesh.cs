@@ -15,7 +15,6 @@ namespace Meshellator.Viewer.Framework.Rendering
 		private readonly int _numVertices;
 		private readonly IndexBuffer _indexBuffer;
 		private readonly int _primitiveCount;
-		private readonly PrimitiveType _primitiveType;
 		private readonly SimpleEffect _effect;
 
 		#endregion
@@ -37,7 +36,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 
 		internal ModelMesh(Mesh sourceMesh, Device device, VertexBuffer vertexBuffer, int numVertices,
 			IndexBuffer indexBuffer, int primitiveCount,
-			Matrix3D world, Material material, PrimitiveType primitiveType)
+			Matrix3D world, Material material)
 		{
 			SourceMesh = sourceMesh;
 			_device = device;
@@ -45,7 +44,6 @@ namespace Meshellator.Viewer.Framework.Rendering
 			_numVertices = numVertices;
 			_indexBuffer = indexBuffer;
 			_primitiveCount = primitiveCount;
-			_primitiveType = primitiveType;
 
 			_effect = new SimpleEffect(device)
 			{
@@ -84,7 +82,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 				_effect.BeginPass(i);
 				
 				_device.DrawIndexedPrimitives(
-					_primitiveType, 0, 0, _numVertices,
+					PrimitiveType.TriangleList, 0, 0, _numVertices,
 					0, _primitiveCount);
 
 				_effect.EndPass();

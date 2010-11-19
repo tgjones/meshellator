@@ -10,11 +10,6 @@ namespace Meshellator.Primitives
 		public Int32Collection Indices { get; private set; }
 		public Point2DCollection TextureCoordinates { get; private set; }
 
-		public virtual PrimitiveTopology PrimitiveTopology
-		{
-			get { return PrimitiveTopology.TriangleList; }
-		}
-
 		protected BasicPrimitiveTessellator()
 		{
 			Positions = new Point3DCollection();

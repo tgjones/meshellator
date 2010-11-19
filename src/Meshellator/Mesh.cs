@@ -1,5 +1,6 @@
 using System;
 using Nexus;
+using Nexus.Graphics.Transforms;
 
 namespace Meshellator
 {
@@ -13,22 +14,11 @@ namespace Meshellator
 		public Point3DCollection TextureCoordinates { get; private set; }
 		public Int32Collection Indices { get; private set; }
 
-		public PrimitiveTopology PrimitiveTopology { get; set; }
+		public Transform3D Transform { get; set; }
 
 		public int PrimitiveCount
 		{
-			get
-			{
-				switch (PrimitiveTopology)
-				{
-					case PrimitiveTopology.TriangleList :
-						return Indices.Count / 3;
-					case PrimitiveTopology.TriangleStrip :
-						return Indices.Count - 2;
-					default :
-						throw new NotSupportedException();
-				}
-			}
+			get { return Indices.Count / 3; }
 		}
 
 		public Material Material { get; set; }
@@ -49,7 +39,7 @@ namespace Meshellator
 			Normals = new Vector3DCollection();
 			TextureCoordinates = new Point3DCollection();
 			Indices = new Int32Collection();
-			PrimitiveTopology = PrimitiveTopology.TriangleList;
+			Transform = new MatrixTransform(Matrix3D.Identity);
 		}
 	}
 }

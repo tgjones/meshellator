@@ -133,6 +133,21 @@
     <Compile Include="Importers\LightwaveObj\Objects\TextureCoordinate.cs" />
     <Compile Include="Importers\LightwaveObj\Objects\Vertex.cs" />
     <Compile Include="Importers\LightwaveObj\Objects\WavefrontObject.cs" />
+    <Compile Include="Importers\Nff\NffImporter.cs" />
+    <Compile Include="Importers\Nff\Parsers\CommentParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\TorusParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\PlaneParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\CylinderParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\CubeParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\TeapotParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\TessellationParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\DefaultParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\MaterialParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\LineParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\LineParserFactory.cs" />
+    <Compile Include="Importers\Nff\Parsers\ParserContext.cs" />
+    <Compile Include="Importers\Nff\Parsers\PrimitiveParser.cs" />
+    <Compile Include="Importers\Nff\Parsers\SphereParser.cs" />
     <Compile Include="MeshellatorLoader.cs" />
     <Compile Include="AssetImporterBase.cs" />
     <Compile Include="ILogger.cs" />
@@ -148,9 +163,9 @@
     <Compile Include="Primitives\PrimitiveTessellator.cs" />
     <Compile Include="Primitives\SphereTessellator.cs" />
     <Compile Include="Primitives\TeapotTessellator.cs" />
-    <Compile Include="PrimitiveTopology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="Util\MeshUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Importers\Autodesk3ds\Licence.txt" />

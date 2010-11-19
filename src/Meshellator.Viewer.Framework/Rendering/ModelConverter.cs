@@ -34,24 +34,10 @@ namespace Meshellator.Viewer.Framework.Rendering
 
 				ModelMesh modelMesh = new ModelMesh(mesh, device, vertexBuffer,
 					mesh.Positions.Count, indexBuffer, mesh.PrimitiveCount,
-					Matrix3D.Identity, mesh.Material,
-					GetPrimitiveType(mesh.PrimitiveTopology));
+					Matrix3D.Identity, mesh.Material);
 				result.Meshes.Add(modelMesh);
 			}
 			return result;
-		}
-
-		private static PrimitiveType GetPrimitiveType(PrimitiveTopology primitiveTopology)
-		{
-			switch (primitiveTopology)
-			{
-				case PrimitiveTopology.TriangleList :
-					return PrimitiveType.TriangleList;
-				case PrimitiveTopology.TriangleStrip :
-					return PrimitiveType.TriangleStrip;
-				default :
-					throw new NotSupportedException();
-			}
 		}
 	}
 }
