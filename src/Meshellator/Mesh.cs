@@ -28,7 +28,9 @@ namespace Meshellator
 			get
 			{
 				if (_bounds == null)
-					_bounds = new AxisAlignedBoundingBox(Positions);
+					_bounds = (Positions.Count > 0)
+						? new AxisAlignedBoundingBox(Positions)
+						: AxisAlignedBoundingBox.Empty;
 				return _bounds.Value;
 			}
 		}

@@ -1,4 +1,3 @@
-using Meshellator.Util;
 using Nexus;
 
 namespace Meshellator.Primitives

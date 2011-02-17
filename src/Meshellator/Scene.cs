@@ -17,7 +17,7 @@ namespace Meshellator
 			{
 				if (_bounds == null)
 				{
-					_bounds = new AxisAlignedBoundingBox();
+					_bounds = AxisAlignedBoundingBox.Empty;
 					foreach (Mesh mesh in Meshes)
 						_bounds = AxisAlignedBoundingBox.Union(_bounds.Value, mesh.Bounds);
 				}
