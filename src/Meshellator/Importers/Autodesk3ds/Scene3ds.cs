@@ -311,7 +311,7 @@ namespace Meshellator.Importers.Autodesk3ds
 			{
 				throw new Exception3ds("Name not terminated! File is probably corrupt.");
 			}
-			name = Encoding.ASCII.GetString(buf, 0, n);
+			name = Encoding.UTF8.GetString(buf, 0, n);
 
 			if (mDecode != null)
 			{

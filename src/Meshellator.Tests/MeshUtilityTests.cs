@@ -1,8 +1,7 @@
-using Meshellator.Util;
 using Nexus;
 using NUnit.Framework;
 
-namespace Meshellator.Tests.Util
+namespace Meshellator.Tests
 {
 	[TestFixture]
 	public class MeshUtilityTests
