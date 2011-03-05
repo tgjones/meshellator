@@ -23,14 +23,24 @@ namespace Meshellator.Importers.LightwaveObj.Objects
 
 		public float Radius { get; set; }
 
-		public WavefrontObject(string fileName)
+		public WavefrontObject()
 		{
 			Vertices = new List<Vertex>();
 			Normals = new List<Vertex>();
 			Textures = new List<TextureCoordinate>();
 			Groups = new List<Group>();
 			Materials = new Dictionary<string, Material>();
+		}
 
+		public static WavefrontObject Load(string fileName)
+		{
+			WavefrontObject result = new WavefrontObject();
+			result.LoadFromFile(fileName);
+			return result;
+		}
+
+		private void LoadFromFile(string fileName)
+		{
 			FileName = fileName;
 			Contextfolder = Path.GetDirectoryName(fileName);
 			Parse(fileName);

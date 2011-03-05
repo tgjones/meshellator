@@ -10,7 +10,7 @@ namespace Meshellator.Importers.LightwaveObj
 	{
 		public override Scene ImportFile(FileStream fileStream, string fileName)
 		{
-			WavefrontObject wavefrontObject = new WavefrontObject(fileName);
+			WavefrontObject wavefrontObject = WavefrontObject.Load(fileName);
 
 			Material defaultMaterial = new Material
 			{

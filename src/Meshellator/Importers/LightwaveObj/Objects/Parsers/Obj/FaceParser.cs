@@ -40,7 +40,8 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 
 		private void ParseLine(int vertexCount)
 		{
-			string[] rawFaces = null;
+			// Fix: explicitly set the array length
+			string[] rawFaces = new string[3];
 
 			vindices = new int[vertexCount];
 			nindices = new int[vertexCount];
@@ -51,7 +52,16 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 
 			for (int i = 1; i <= vertexCount; i++)
 			{
-				rawFaces = Words[i].Split('/');
+				// Fix: Use additional array for parsed words
+				var wordParts = Words[i].Split('/');
+				// Fix: setup rawFaces array
+				rawFaces[0] = wordParts[0];
+				rawFaces[1] = (wordParts.Length == 3) ? wordParts[1] : null;
+				rawFaces[2] = (wordParts.Length == 3)
+					? wordParts[2]
+					: (wordParts.Length == 2)
+						? wordParts[1]
+						: null;
 
 				// v
 				int currentValue = int.Parse(rawFaces[0]);
@@ -76,10 +86,13 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 				}
 
 				// save normal
-				currentValue = int.Parse(rawFaces[2]);
+				if (!string.IsNullOrEmpty(rawFaces[2]))
+				{
+					currentValue = int.Parse(rawFaces[2]);
 
-				nindices[i - 1] = currentValue - 1;
-				normals[i - 1] = _object.Normals[currentValue - 1]; 	// -1 because references starts at 1
+					nindices[i - 1] = currentValue - 1;
+					normals[i - 1] = _object.Normals[currentValue - 1]; // -1 because references starts at 1
+				}
 			}
 		}
 
