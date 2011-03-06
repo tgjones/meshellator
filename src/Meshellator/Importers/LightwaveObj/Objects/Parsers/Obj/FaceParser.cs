@@ -69,10 +69,8 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 				// save vertex
 				vertices[i - 1] = _object.Vertices[currentValue - 1];	// -1 because references starts at 1
 
-				if (rawFaces.Length == 1)
-				{
+				if (wordParts.Length == 1)
 					continue;
-				}
 
 				// save texcoords
 				if (!string.IsNullOrEmpty(rawFaces[1]))
