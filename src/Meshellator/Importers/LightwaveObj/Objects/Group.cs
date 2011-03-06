@@ -16,6 +16,12 @@ namespace Meshellator.Importers.LightwaveObj.Objects
 		public List<TextureCoordinate> TextureCoordinates = new List<TextureCoordinate>();
 		public int IndexCount;
 
+		public Group()
+			: this("default")
+		{
+			
+		}
+
 		public Group(string name)
 		{
 			Faces = new List<Face>();

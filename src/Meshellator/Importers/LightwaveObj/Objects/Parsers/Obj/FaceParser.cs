@@ -107,7 +107,7 @@ namespace Meshellator.Importers.LightwaveObj.Objects.Parsers.Obj
 
 			if (group == null)
 			{
-				group = new Group("Default created by loader");
+				group = new Group();
 				wavefrontObject.Groups.Add(group);
 				wavefrontObject.CurrentGroup = group;
 			}
