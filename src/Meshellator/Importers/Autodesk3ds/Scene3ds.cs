@@ -1229,7 +1229,9 @@ namespace Meshellator.Importers.Autodesk3ds
 						break;
 					case CHUNK_NODE_HDR:
 						name = ReadName();
-						cam = Cameras.First(c => c.name() == name);
+						cam = Cameras.FirstOrDefault(c => c.name() == name);
+						if (cam == null) // TODO: This doesn't seem right.
+							cam = Cameras.First();
 						cam.mTargetNodeId = target_node_id;
 						cam.mTargetNodeFlags = ReadInt();
 						cam.mTargetParentNodeId = ReadUnsignedShort();

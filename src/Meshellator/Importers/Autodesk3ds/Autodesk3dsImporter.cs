@@ -54,24 +54,42 @@ namespace Meshellator.Importers.Autodesk3ds
 
 				//resultMesh.Material = defaultMaterial;
 
-				// TODO: Split by face materials so that each mesh only has one material.
-				Debug.Assert(mesh3ds.faceMats() == 1);
-				for (int fm = 0; fm < mesh3ds.faceMats(); ++fm)
+				// TODO: Is this right?
+				if (mesh3ds.faceMats() == 0)
 				{
-					// Get current material's face.
-					FaceMat3ds fmat = mesh3ds.faceMat(fm);
-					Material material = result.Materials[fmat.material()];
-					resultMesh.Material = material;
+					resultMesh.Material = defaultMaterial;
 
-					for (int fi = 0; fi < fmat.faces(); ++fi)
+					for (int fi = 0; fi < mesh3ds.faces(); ++fi)
 					{
-						int idx = fmat.face(fi);
-						Face3ds f = mesh3ds.face(idx);
+						Face3ds f = mesh3ds.face(fi);
 
 
 						resultMesh.Indices.Add(f.P0);
 						resultMesh.Indices.Add(f.P1);
 						resultMesh.Indices.Add(f.P2);
+					}
+				}
+				else
+				{
+					// TODO: Split by face materials so that each mesh only has one material.
+					Debug.Assert(mesh3ds.faceMats() == 1);
+					for (int fm = 0; fm < mesh3ds.faceMats(); ++fm)
+					{
+						// Get current material's face.
+						FaceMat3ds fmat = mesh3ds.faceMat(fm);
+						Material material = result.Materials[fmat.material()];
+						resultMesh.Material = material;
+
+						for (int fi = 0; fi < fmat.faces(); ++fi)
+						{
+							int idx = fmat.face(fi);
+							Face3ds f = mesh3ds.face(idx);
+
+
+							resultMesh.Indices.Add(f.P0);
+							resultMesh.Indices.Add(f.P1);
+							resultMesh.Indices.Add(f.P2);
+						}
 					}
 				}
 			}
