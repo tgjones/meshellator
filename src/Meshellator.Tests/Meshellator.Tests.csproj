@@ -47,9 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Importers\LightwaveObj\Objects\Parsers\FaceParserTests.cs" />
+    <Compile Include="Importers\Obj\Objects\Parsers\FaceParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Importers\Autodesk3ds\Autodesk3dsTest.cs" />
+    <Compile Include="Importers\3ds\Autodesk3dsTest.cs" />
     <Compile Include="MeshUtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
