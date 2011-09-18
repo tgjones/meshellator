@@ -290,6 +290,27 @@
     <Compile Include="..\Meshellator\Importers\Obj\ObjImporter.cs">
       <Link>Importers\Obj\ObjImporter.cs</Link>
     </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyElement.cs">
+      <Link>Importers\Ply\PlyElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyElementValue.cs">
+      <Link>Importers\Ply\PlyElementValue.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyFile.cs">
+      <Link>Importers\Ply\PlyFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyFileType.cs">
+      <Link>Importers\Ply\PlyFileType.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyImporter.cs">
+      <Link>Importers\Ply\PlyImporter.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyProperty.cs">
+      <Link>Importers\Ply\PlyProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\Meshellator\Importers\Ply\PlyPropertyType.cs">
+      <Link>Importers\Ply\PlyPropertyType.cs</Link>
+    </Compile>
     <Compile Include="..\Meshellator\Material.cs">
       <Link>Material.cs</Link>
     </Compile>
@@ -347,6 +368,9 @@
     </Content>
     <Content Include="..\Meshellator\Importers\Obj\Licence.txt">
       <Link>Importers\Obj\Licence.txt</Link>
+    </Content>
+    <Content Include="..\Meshellator\Importers\Ply\Licence.txt">
+      <Link>Importers\Ply\Licence.txt</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
