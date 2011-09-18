@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using Nexus;
 
 namespace Meshellator.Importers.Ply
@@ -12,6 +13,11 @@ namespace Meshellator.Importers.Ply
 			var scene = new Scene();
 			var mesh = new Mesh();
 			scene.Meshes.Add(mesh);
+
+			// Reading materials from PLY files is not supported yet.
+			var material = new Material();
+			scene.Materials.Add(material);
+			mesh.Material = material;
 
 			// Create record for this object.
 			var plyFile = new PlyFile();
@@ -71,13 +77,33 @@ namespace Meshellator.Importers.Ply
 				switch (element.Name)
 				{
 					case "vertex" :
+						int xIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "x"));
+						int yIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "y"));
+						int zIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "z"));
+						int nxIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "nx"));
+						int nyIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "ny"));
+						int nzIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "nz"));
+						int sIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "s"));
+						int tIndex = element.Properties.IndexOf(element.Properties.SingleOrDefault(p => p.Name == "t"));
 						foreach (var elementValue in element.ElementValues)
 						{
-							var position = new Point3D(
-								(float) elementValue.PropertyValues[0],
-								(float) elementValue.PropertyValues[1],
-								(float) elementValue.PropertyValues[2]);
-							mesh.Positions.Add(position);
+							if (xIndex != -1 && yIndex != -1 && zIndex != -1)
+								mesh.Positions.Add(new Point3D(
+									(float) elementValue.PropertyValues[xIndex],
+									(float) elementValue.PropertyValues[yIndex],
+									(float) elementValue.PropertyValues[zIndex]));
+
+							if (nxIndex != -1 && nyIndex != -1 && nzIndex != -1)
+								mesh.Normals.Add(new Vector3D(
+									(float) elementValue.PropertyValues[nxIndex],
+									(float) elementValue.PropertyValues[nyIndex],
+									(float) elementValue.PropertyValues[nzIndex]));
+
+							if (sIndex != -1 && tIndex != -1)
+								mesh.TextureCoordinates.Add(new Point3D(
+									(float)elementValue.PropertyValues[sIndex],
+									(float)elementValue.PropertyValues[tIndex],
+									0));
 						}
 						break;
 					case "face" :
@@ -86,9 +112,9 @@ namespace Meshellator.Importers.Ply
 							if (elementValue.PropertyValues.Count != 3)
 								throw new Exception("Only triangle faces are currently supported");
 
-							mesh.Indices.Add((int) elementValue.PropertyValues[0]);
-							mesh.Indices.Add((int) elementValue.PropertyValues[1]);
-							mesh.Indices.Add((int) elementValue.PropertyValues[2]);
+							mesh.Indices.Add(Convert.ToInt32(elementValue.PropertyValues[0]));
+							mesh.Indices.Add(Convert.ToInt32(elementValue.PropertyValues[1]));
+							mesh.Indices.Add(Convert.ToInt32(elementValue.PropertyValues[2]));
 						}
 						break;
 				}

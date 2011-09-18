@@ -63,10 +63,10 @@
     <None Include="Models\3ds\85-nissan-fairlady.3DS">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Models\Ply\Cube2.ply">
+    <None Include="Models\Ply\Bunny.ply">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Models\Ply\Bunny.ply">
+    <None Include="Models\Ply\Wuson.ply">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

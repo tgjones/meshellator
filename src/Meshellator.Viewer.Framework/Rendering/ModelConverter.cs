@@ -22,7 +22,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 					LockFlags.None);
 				VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[mesh.Positions.Count];
 				for (int i = 0; i < vertices.Length; ++i)
-					vertices[i] = new VertexPositionNormalTexture(mesh.Positions[i], mesh.Normals[i], Point2D.Zero);
+					vertices[i] = new VertexPositionNormalTexture(mesh.Positions[i], (mesh.Normals.Count > i) ? mesh.Normals[i] : Vector3D.Zero, Point2D.Zero);
 				vertexDataStream.WriteRange(vertices);
 				vertexBuffer.Unlock();
 
