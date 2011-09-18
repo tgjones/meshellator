@@ -122,6 +122,13 @@
     <Compile Include="Importers\Nff\Parsers\ParserContext.cs" />
     <Compile Include="Importers\Nff\Parsers\PrimitiveParser.cs" />
     <Compile Include="Importers\Nff\Parsers\SphereParser.cs" />
+    <Compile Include="Importers\Ply\PlyElement.cs" />
+    <Compile Include="Importers\Ply\PlyElementValue.cs" />
+    <Compile Include="Importers\Ply\PlyFile.cs" />
+    <Compile Include="Importers\Ply\PlyFileType.cs" />
+    <Compile Include="Importers\Ply\PlyImporter.cs" />
+    <Compile Include="Importers\Ply\PlyProperty.cs" />
+    <Compile Include="Importers\Ply\PlyPropertyType.cs" />
     <Compile Include="MeshellatorLoader.cs" />
     <Compile Include="AssetImporterBase.cs" />
     <Compile Include="ILogger.cs" />
@@ -144,6 +151,7 @@
   <ItemGroup>
     <Content Include="Importers\3ds\Licence.txt" />
     <Content Include="Importers\Obj\Licence.txt" />
+    <Content Include="Importers\Ply\Licence.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
