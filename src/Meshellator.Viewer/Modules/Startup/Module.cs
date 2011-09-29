@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
-using Caliburn.PresentationFramework;
+using Caliburn.Micro;
 using Gemini.Framework;
+using Gemini.Framework.Menus;
 using Gemini.Framework.Results;
-using Gemini.Framework.Ribbon;
-using Gemini.Framework.Services;
 using Meshellator.Viewer.Framework.Rendering;
 using Meshellator.Viewer.Framework.Results;
 using Meshellator.Viewer.Framework.Scenes;
@@ -14,13 +14,12 @@ using Nexus;
 
 namespace Meshellator.Viewer.Modules.Startup
 {
+	[Export(typeof(IModule))]
 	public class Module : ModuleBase
 	{
-		protected override void Initialize()
+		public override void Initialize()
 		{
-			IShell shell = Container.GetInstance<IShell>();
-
-			shell.Title = "Meshellator Viewer";
+			Shell.Title = "Meshellator Viewer";
 
 			Scene torusScene = MeshellatorLoader.CreateFromTorus(10, 1, 20);
 			Scene teapotScene = MeshellatorLoader.CreateFromTeapot(15, 20);
@@ -31,36 +30,23 @@ namespace Meshellator.Viewer.Modules.Startup
 			torusScene.Meshes.Add(teapotScene.Meshes[0]);
 			torusScene.Meshes.Add(planeScene.Meshes[0]);
 
-			shell.OpenDocument(new ModelEditorViewModel(new SceneViewModel(torusScene), "[New Shape]"));
+			Shell.OpenDocument(new ModelEditorViewModel(new SceneViewModel(torusScene), "[New Shape]"));
 
-			shell.Ribbon.AddBackstageItems(
-				new RibbonButton("New Sphere", NewSphere),
-				new RibbonButton("New Teapot", NewTeapot));
+			var fileMenuItem = Shell.MainMenu.First(mi => mi.Name == "File");
+			fileMenuItem.Children.Insert(0, new MenuItem("New Sphere", NewSphere));
+			fileMenuItem.Children.Insert(1, new MenuItem("New Teapot", NewTeapot));
+			fileMenuItem.Children.Insert(2, new MenuItemSeparator());
 
-			shell.Ribbon.Tabs
-				.First(t => t.Name == "Home")
-				.Add(new RibbonGroup("Fill Mode", new List<IRibbonItem>
-				{
-					new RibbonToggleButton("Solid", SetFillModeSolid, ChangeRenderStateCanExecute, "FillMode") { IsChecked = true },
-					new RibbonToggleButton("Wireframe", SetFillModeWireframe, ChangeRenderStateCanExecute, "FillMode"),
-					new RibbonToggleButton("Point", SetFillModePoint, ChangeRenderStateCanExecute, "FillMode")
-				}));
-
-			shell.Ribbon.Tabs
-				.First(t => t.Name == "Home")
-				.Add(new RibbonGroup("Show", new List<IRibbonItem>
-				{
-					new RibbonCheckBox("Normals", ToggleNormals, ChangeRenderStateCanExecute),
-					new RibbonCheckBox("Shadows", ToggleShadows, ChangeRenderStateCanExecute) { IsChecked = true }
-				}));
-
-			shell.Ribbon.Tabs
-				.First(t => t.Name == "Home")
-				.Add(new RibbonGroup("Render Options", new List<IRibbonItem>
-				{
-					new RibbonCheckBox("Anti-Aliasing", ToggleAntiAliasing, ChangeRenderStateCanExecute) { IsChecked = true },
-					new RibbonCheckBox("No Specular", ToggleSpecular, ChangeRenderStateCanExecute)
-				}));
+			var rendererMenu = new MenuItem("Renderer");
+			Shell.MainMenu.Add(rendererMenu);
+			rendererMenu.Add(
+				new CheckableMenuItem("Wireframe", ToggleFillModeWireframe),
+				MenuItemBase.Separator,
+				new CheckableMenuItem("Show Normals", ToggleNormals, ChangeRenderStateCanExecute),
+				new CheckableMenuItem("Show Shadows", ToggleShadows, ChangeRenderStateCanExecute) { IsChecked = true },
+				MenuItemBase.Separator,
+				new CheckableMenuItem("Anti-Aliasing", ToggleAntiAliasing, ChangeRenderStateCanExecute) { IsChecked = true },
+				new CheckableMenuItem("No Specular", ToggleSpecular, ChangeRenderStateCanExecute));
 		}
 
 		private static IEnumerable<IResult> NewSphere()
@@ -73,26 +59,9 @@ namespace Meshellator.Viewer.Modules.Startup
 			yield return Show.Document(new ModelEditorViewModel(new SceneViewModel(MeshellatorLoader.CreateFromTeapot(10, 10)), "[New Teapot]"));
 		}
 
-		private static IEnumerable<IResult> SetFillModeSolid(bool isChecked)
+		private static IEnumerable<IResult> ToggleFillModeWireframe(bool isChecked)
 		{
-			return SetFillMode(isChecked, FillMode.Solid);
-		}
-
-		private static IEnumerable<IResult> SetFillModeWireframe(bool isChecked)
-		{
-			return SetFillMode(isChecked, FillMode.Wireframe);
-		}
-
-		private static IEnumerable<IResult> SetFillModePoint(bool isChecked)
-		{
-			return SetFillMode(isChecked, FillMode.Point);
-		}
-
-		private static IEnumerable<IResult> SetFillMode(bool isChecked, FillMode fillMode)
-		{
-			if (!isChecked)
-				yield break;
-			yield return new RenderSettingsResult(e => e.RenderParameters.FillMode = fillMode);
+			yield return new RenderSettingsResult(e => e.RenderParameters.FillMode = (isChecked) ? FillMode.Wireframe : FillMode.Solid);
 		}
 
 		private static IEnumerable<IResult> ToggleNormals(bool isChecked)
@@ -117,7 +86,7 @@ namespace Meshellator.Viewer.Modules.Startup
 
 		private bool ChangeRenderStateCanExecute()
 		{
-			return (Container.GetInstance<IShell>().CurrentPresenter is IModelEditor);
+			return (Shell.ActiveItem is IModelEditor);
 		}
 	}
 }

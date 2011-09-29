@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meshellator.Viewer", "Meshellator.Viewer\Meshellator.Viewer.csproj", "{96766DF2-2757-41CC-AD3E-32F8ECE9C3B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meshellator.Viewer.Framework", "Meshellator.Viewer.Framework\Meshellator.Viewer.Framework.csproj", "{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meshellator.Silverlight", "Meshellator.Silverlight\Meshellator.Silverlight.csproj", "{11BB14D7-2E35-4EA7-9FC2-D64DB94FC7C1}"
 EndProject
 Global
@@ -34,10 +32,6 @@ Global
 		{96766DF2-2757-41CC-AD3E-32F8ECE9C3B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96766DF2-2757-41CC-AD3E-32F8ECE9C3B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96766DF2-2757-41CC-AD3E-32F8ECE9C3B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11BB14D7-2E35-4EA7-9FC2-D64DB94FC7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11BB14D7-2E35-4EA7-9FC2-D64DB94FC7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11BB14D7-2E35-4EA7-9FC2-D64DB94FC7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU

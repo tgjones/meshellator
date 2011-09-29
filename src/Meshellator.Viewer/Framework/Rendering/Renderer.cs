@@ -1,5 +1,5 @@
+using Caliburn.Micro;
 using Gemini.Framework.Services;
-using Microsoft.Practices.ServiceLocation;
 using Nexus;
 using Nexus.Graphics.Transforms;
 using SlimDX;
@@ -50,7 +50,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 			renderSettings.ViewMatrix = Matrix3D.Invert(_cameraTransform.Value) * _view;
 			renderSettings.Parameters = parameters;
 
-			ServiceLocator.Current.GetInstance<IStatusBar>().Message = "Camera Location: " + renderSettings.ViewMatrix.Translation;
+			IoC.Get<IStatusBar>().Message = "Camera Location: " + renderSettings.ViewMatrix.Translation;
 
 			_device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, new Color4(0.3f, 0.3f, 0.3f), 1.0f, 0);
 			_device.BeginScene();

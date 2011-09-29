@@ -18,7 +18,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Effects
 		}
 
 		public GaussianBlurEffect(Device device)
-			: base(EffectUtility.FromResource(device, "Rendering/Effects/GaussianBlurEffect.fx"))
+			: base(EffectUtility.FromResource(device, "Framework/Rendering/Effects/GaussianBlurEffect.fx"))
 		{
 		}
 	}

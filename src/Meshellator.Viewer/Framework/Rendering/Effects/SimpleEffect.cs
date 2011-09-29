@@ -98,7 +98,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Effects
 		}
 
 		public SimpleEffect(Device device)
-			: base(EffectUtility.FromResource(device, "Rendering/Effects/SimpleEffect.fx"))
+			: base(EffectUtility.FromResource(device, "Framework/Rendering/Effects/SimpleEffect.fx"))
 		{
 			
 		}

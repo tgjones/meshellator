@@ -13,7 +13,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Effects
 		}
 
 		public LineEffect(Device device)
-			: base(EffectUtility.FromResource(device, "Rendering/Effects/LineEffect.fx"))
+			: base(EffectUtility.FromResource(device, "Framework/Rendering/Effects/LineEffect.fx"))
 		{
 		}
 	}

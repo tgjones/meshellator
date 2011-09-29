@@ -1,4 +1,4 @@
-using Caliburn.Core;
+using Caliburn.Micro;
 using Nexus;
 
 namespace Meshellator.Viewer.Framework.Rendering
@@ -7,8 +7,8 @@ namespace Meshellator.Viewer.Framework.Rendering
 	{
 		private FillMode _fillMode;
 		private bool _showNormals;
-		private bool _showShadows;
-		private bool _antiAliasingEnabled;
+		private bool _showShadows = true;
+		private bool _antiAliasingEnabled = true;
 		private bool _noSpecular;
 		private Vector3D _lightDirection = Vector3D.Normalize(new Vector3D(1, 1, 0));
 

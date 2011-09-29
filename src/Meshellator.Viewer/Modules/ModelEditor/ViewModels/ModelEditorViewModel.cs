@@ -1,5 +1,5 @@
 using System;
-using Gemini.Framework;
+using Caliburn.Micro;
 using Meshellator.Viewer.Framework.Rendering;
 using Meshellator.Viewer.Framework.Scenes;
 using Meshellator.Viewer.Framework.Services;

@@ -27,11 +27,11 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 		{
 			switch (settings.Parameters.FillMode)
 			{
+				case FillMode.Solid:
+					_fillMode = SlimDX.Direct3D9.FillMode.Solid;
+					return true;
 				case FillMode.Wireframe:
 					_fillMode = SlimDX.Direct3D9.FillMode.Wireframe;
-					return true;
-				case FillMode.Point:
-					_fillMode = SlimDX.Direct3D9.FillMode.Point;
 					return true;
 				default:
 					return false;

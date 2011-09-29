@@ -57,36 +57,18 @@
     <Reference Include="AvalonDock.Themes">
       <HintPath>..\..\lib\Gemini\AvalonDock.Themes.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Core">
-      <HintPath>..\..\lib\Caliburn\Caliburn.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.PresentationFramework">
-      <HintPath>..\..\lib\Caliburn\Caliburn.PresentationFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.StructureMap">
-      <HintPath>..\..\lib\Caliburn\Caliburn.StructureMap.dll</HintPath>
-    </Reference>
-    <Reference Include="Fluent">
-      <HintPath>..\..\lib\Gemini\Fluent.dll</HintPath>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\..\lib\Gemini\Caliburn.Micro.dll</HintPath>
     </Reference>
     <Reference Include="Gemini">
       <HintPath>..\..\lib\Gemini\Gemini.dll</HintPath>
     </Reference>
-    <Reference Include="Gemini.Framework">
-      <HintPath>..\..\lib\Gemini\Gemini.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\lib\Caliburn\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="Nexus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nexus.1.0.0.0\lib\NET40\Nexus.dll</HintPath>
     </Reference>
-    <Reference Include="SlimDX, Version=4.0.10.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
+    <Reference Include="SlimDX, Version=2.0.9.42, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SlimDX\x86\SlimDX.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\lib\Caliburn\StructureMap.dll</HintPath>
+      <HintPath>..\..\lib\SlimDX\x64\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -103,9 +85,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPG">
-      <HintPath>..\..\lib\WPG\WPG.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,8 +95,37 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Framework\Rendering\ConversionExtensions.cs" />
+    <Compile Include="Framework\Rendering\Decorators\BlurComponent.cs" />
+    <Compile Include="Framework\Rendering\Decorators\DecoratorBase.cs" />
+    <Compile Include="Framework\Rendering\Decorators\FillModeDecorator.cs" />
+    <Compile Include="Framework\Rendering\Decorators\IDecorator.cs" />
+    <Compile Include="Framework\Rendering\Decorators\NormalsDecorator.cs" />
+    <Compile Include="Framework\Rendering\Decorators\RenderOptionsDecorator.cs" />
+    <Compile Include="Framework\Rendering\Decorators\ShadowDecorator.cs" />
+    <Compile Include="Framework\Rendering\Effects\EffectParameter.cs" />
+    <Compile Include="Framework\Rendering\Effects\EffectUtility.cs" />
+    <Compile Include="Framework\Rendering\Effects\EffectWrapperBase.cs" />
+    <Compile Include="Framework\Rendering\Effects\GaussianBlurEffect.cs" />
+    <Compile Include="Framework\Rendering\Effects\LineEffect.cs" />
+    <Compile Include="Framework\Rendering\Effects\SimpleEffect.cs" />
+    <Compile Include="Framework\Rendering\FillMode.cs" />
+    <Compile Include="Framework\Rendering\GraphicsDeviceService.cs" />
+    <Compile Include="Framework\Rendering\IGraphicsDeviceService.cs" />
+    <Compile Include="Framework\Rendering\Model.cs" />
+    <Compile Include="Framework\Rendering\ModelConverter.cs" />
+    <Compile Include="Framework\Rendering\ModelMesh.cs" />
+    <Compile Include="Framework\Rendering\Renderer.cs" />
+    <Compile Include="Framework\Rendering\RenderParameters.cs" />
+    <Compile Include="Framework\Rendering\RenderSettings.cs" />
+    <Compile Include="Framework\Rendering\RenderWindow.cs" />
+    <Compile Include="Framework\Rendering\VertexPositionNormalTexture.cs" />
+    <Compile Include="Framework\Rendering\VertexTransformedPositionTexture.cs" />
+    <Compile Include="Framework\Results\RenderSettingsResult.cs" />
+    <Compile Include="Framework\Scenes\MaterialViewModel.cs" />
+    <Compile Include="Framework\Scenes\SceneViewModel.cs" />
+    <Compile Include="Framework\Services\IModelEditor.cs" />
     <Compile Include="Modules\ModelEditor\EditorProvider.cs" />
-    <Compile Include="Modules\ModelEditor\Module.cs" />
     <Compile Include="Modules\ModelEditor\Views\ModelEditorView.xaml.cs">
       <DependentUpon>ModelEditorView.xaml</DependentUpon>
     </Compile>
@@ -153,6 +161,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Resource Include="Framework\Rendering\Effects\GaussianBlurEffect.fx" />
+    <Resource Include="Framework\Rendering\Effects\LineEffect.fx" />
+    <Resource Include="Framework\Rendering\Effects\SimpleEffect.fx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -161,10 +172,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Meshellator.Viewer.Framework\Meshellator.Viewer.Framework.csproj">
-      <Project>{FE9B4C88-2E7D-445A-9681-DF5A3D06954D}</Project>
-      <Name>Meshellator.Viewer.Framework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Meshellator\Meshellator.csproj">
       <Project>{CEBA7681-E968-46F6-8C87-7005FAA98267}</Project>
       <Name>Meshellator</Name>
@@ -180,7 +187,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Framework\Rendering\Decorators\Tulips.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

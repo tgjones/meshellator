@@ -1,10 +1,11 @@
+using System.ComponentModel.Composition;
 using System.Linq;
-using Caliburn.PresentationFramework;
-using Gemini.Framework;
+using Caliburn.Micro;
 using Meshellator.Viewer.Framework.Scenes;
 
 namespace Meshellator.Viewer.Modules.ModelExplorer.ViewModels
 {
+	[Export(typeof(IModelExplorer))]
 	public class ModelExplorerViewModel : Screen, IModelExplorer
 	{
 		public IObservableCollection<SceneViewModel> Scenes { get; set; }

@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Caliburn.Core;
-using Caliburn.PresentationFramework;
+using System.ComponentModel.Composition;
+using Caliburn.Micro;
 using Gemini.Framework;
 using Gemini.Framework.Results;
-using Gemini.Framework.Ribbon;
 using Gemini.Framework.Services;
 using Meshellator.Viewer.Framework.Scenes;
 using Meshellator.Viewer.Modules.ModelEditor.ViewModels;
-using Meshellator.Viewer.Modules.ModelExplorer.ViewModels;
 
 namespace Meshellator.Viewer.Modules.ModelExplorer
 {
+	//[Export(typeof(IModule))]
 	public class Module : ModuleBase
 	{
-		protected override IEnumerable<ComponentInfo> GetComponents()
-		{
-			yield return Singleton<IModelExplorer, ModelExplorerViewModel>();
-		}
+		[Import(typeof(IModelExplorer))]
+		private IModelExplorer _modelExplorer;
 
-		protected override void Initialize()
+		public override void Initialize()
 		{
 			// Hook into event which tells us when the active model changes.
 			// When that happens we want to update the model explorer.
-			Shell.ActiveDocumentChanged += OnShellActiveDocumentChanged;
+			//Shell.ActiveDocumentChanged += OnShellActiveDocumentChanged;
 
 			/*Ribbon.Tabs
 				.First(x => x.Name == "Home")
@@ -33,15 +29,15 @@ namespace Meshellator.Viewer.Modules.ModelExplorer
 
 		private void OnShellActiveDocumentChanged(object sender, System.EventArgs e)
 		{
-			SceneViewModel scene = (Shell.CurrentPresenter is ModelEditorViewModel)
-				? ((ModelEditorViewModel) Shell.CurrentPresenter).Scene
+			SceneViewModel scene = (Shell.ActiveItem is ModelEditorViewModel)
+				? ((ModelEditorViewModel) Shell.ActiveItem).Scene
 				: null;
-			Container.GetInstance<IModelExplorer>().Scene = scene;
+			_modelExplorer.Scene = scene;
 		}
 
 		private static IEnumerable<IResult> OpenModelExplorer()
 		{
-			yield return Show.Tool<IModelExplorer>(Pane.Left);
+			yield return Show.Tool<IModelExplorer>(PaneLocation.Left);
 		}
 	}
 }
