@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Meshellator.Importers.Obj.Objects;
 using Nexus;
+using Nexus.Graphics.Colors;
 
 namespace Meshellator.Importers.Obj
 {

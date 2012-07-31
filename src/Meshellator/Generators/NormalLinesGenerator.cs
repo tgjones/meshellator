@@ -1,5 +1,6 @@
 using System;
 using Nexus;
+using Nexus.Objects3D;
 
 namespace Meshellator.Generators
 {

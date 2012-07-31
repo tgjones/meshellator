@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Nexus;
+using Nexus.Graphics.Colors;
 
 namespace Meshellator.Importers.Autodesk3ds
 {

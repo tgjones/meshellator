@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Meshellator.Primitives;
 using Nexus;
+using Nexus.Graphics.Colors;
 
 namespace Meshellator
 {

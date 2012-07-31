@@ -1,25 +1,26 @@
 using System.Collections.Generic;
 using Nexus;
+using Nexus.Objects3D;
 
 namespace Meshellator
 {
 	public class Scene
 	{
-		private AxisAlignedBoundingBox? _bounds;
+		private AxisAlignedBox3D? _bounds;
 
 		public string FileName { get; set; }
 		public List<Mesh> Meshes { get; private set; }
 		public List<Material> Materials { get; private set; }
 
-		public AxisAlignedBoundingBox Bounds
+		public AxisAlignedBox3D Bounds
 		{
 			get
 			{
 				if (_bounds == null)
 				{
-					_bounds = AxisAlignedBoundingBox.Empty;
+					_bounds = AxisAlignedBox3D.Empty;
 					foreach (Mesh mesh in Meshes)
-						_bounds = AxisAlignedBoundingBox.Union(_bounds.Value, mesh.Bounds);
+						_bounds = AxisAlignedBox3D.Union(_bounds.Value, mesh.Bounds);
 				}
 				return _bounds.Value;
 			}

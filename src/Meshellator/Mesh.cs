@@ -1,12 +1,13 @@
 using System;
 using Nexus;
 using Nexus.Graphics.Transforms;
+using Nexus.Objects3D;
 
 namespace Meshellator
 {
 	public class Mesh
 	{
-		private AxisAlignedBoundingBox? _bounds;
+		private AxisAlignedBox3D? _bounds;
 
 		public string Name { get; set; }
 		public Point3DCollection Positions { get; private set; }
@@ -23,14 +24,14 @@ namespace Meshellator
 
 		public Material Material { get; set; }
 
-		public AxisAlignedBoundingBox Bounds
+		public AxisAlignedBox3D Bounds
 		{
 			get
 			{
 				if (_bounds == null)
 					_bounds = (Positions.Count > 0)
-						? new AxisAlignedBoundingBox(Positions)
-						: AxisAlignedBoundingBox.Empty;
+						? new AxisAlignedBox3D(Positions)
+						: AxisAlignedBox3D.Empty;
 				return _bounds.Value;
 			}
 		}
