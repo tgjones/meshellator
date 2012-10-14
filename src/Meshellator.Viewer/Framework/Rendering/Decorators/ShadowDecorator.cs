@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Nexus;
+using Nexus.Objects3D;
 using SlimDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Decorators
@@ -10,7 +11,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 
 		private readonly Device _device;
 		private Matrix3D _lightViewProjection;
-		private readonly BoundingFrustum _cameraFrustum;
+		private readonly Frustum3D _cameraFrustum;
 
 		private bool _creatingShadowMap;
 
@@ -26,7 +27,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 		public ShadowDecorator(Device device)
 		{
 			_device = device;
-			_cameraFrustum = new BoundingFrustum(Matrix3D.Identity);
+			_cameraFrustum = new Frustum3D(Matrix3D.Identity);
 
 			// Create new floating point render target
 			_shadowRenderTarget = new Texture(device, ShadowMapSize, ShadowMapSize, 1,
@@ -110,7 +111,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 
 			// Find the smallest box around the points
 			//AxisAlignedBoundingBox lightBox = new AxisAlignedBoundingBox(frustumCorners);
-			AxisAlignedBoundingBox lightBox = model.SourceScene.Bounds;
+			AxisAlignedBox3D lightBox = model.SourceScene.Bounds;
 			lightBox.Transform(lightRotation);
 
 			//lightBox = lightBox.Transform(Matrix3D.CreateScale(2f));

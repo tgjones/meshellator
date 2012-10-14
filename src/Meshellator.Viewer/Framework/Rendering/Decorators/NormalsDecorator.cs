@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Meshellator.Generators;
 using Meshellator.Viewer.Framework.Rendering.Effects;
 using Nexus;
+using Nexus.Objects3D;
 using SlimDX;
 using SlimDX.Direct3D9;
 

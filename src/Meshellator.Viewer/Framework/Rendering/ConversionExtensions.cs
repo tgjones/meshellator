@@ -1,4 +1,5 @@
 using Nexus;
+using Nexus.Graphics.Colors;
 using SlimDX;
 
 namespace Meshellator.Viewer.Framework.Rendering

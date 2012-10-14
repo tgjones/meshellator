@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Meshellator.Viewer.Framework.Rendering.Decorators;
 using Meshellator.Viewer.Framework.Rendering.Effects;
 using Nexus;
+using Nexus.Graphics.Colors;
 using SlimDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering

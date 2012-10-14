@@ -2,6 +2,7 @@ using Caliburn.Micro;
 using Gemini.Framework.Services;
 using Nexus;
 using Nexus.Graphics.Transforms;
+using Nexus.Objects3D;
 using SlimDX;
 using SlimDX.Direct3D9;
 
@@ -26,7 +27,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 
 			const float fov = MathUtility.PI_OVER_4;
 
-			AxisAlignedBoundingBox bounds = _model.SourceScene.Bounds;
+			AxisAlignedBox3D bounds = _model.SourceScene.Bounds;
 			Vector3D max = bounds.Size;
 			float radius = System.Math.Max(max.X, System.Math.Max(max.Y, max.Z));
 

@@ -10,7 +10,7 @@ using Meshellator.Viewer.Framework.Results;
 using Meshellator.Viewer.Framework.Scenes;
 using Meshellator.Viewer.Framework.Services;
 using Meshellator.Viewer.Modules.ModelEditor.ViewModels;
-using Nexus;
+using Nexus.Graphics.Colors;
 
 namespace Meshellator.Viewer.Modules.Startup
 {
