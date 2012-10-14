@@ -44,9 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="AssetImporterAttribute.cs" />
     <Compile Include="Generators\NormalLinesGenerator.cs" />
     <Compile Include="IAssetImporter.cs" />
