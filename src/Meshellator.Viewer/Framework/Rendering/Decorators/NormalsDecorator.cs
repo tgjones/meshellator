@@ -5,8 +5,8 @@ using Meshellator.Generators;
 using Meshellator.Viewer.Framework.Rendering.Effects;
 using Nexus;
 using Nexus.Objects3D;
-using SlimDX;
-using SlimDX.Direct3D9;
+using SharpDX;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Decorators
 {
@@ -117,7 +117,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 			for (int pass = 0; pass < passes; ++pass)
 			{
 				_lineEffect.BeginPass(pass);
-				_device.DrawIndexedPrimitives(PrimitiveType.LineList, 0, 0,
+				_device.DrawIndexedPrimitive(PrimitiveType.LineList, 0, 0,
 					normalBuffers.VertexCount, 0, normalBuffers.PrimitiveCount);
 				_lineEffect.EndPass();
 			}

@@ -1,12 +1,12 @@
 using Nexus;
 using Nexus.Graphics.Colors;
-using SlimDX;
+using SharpDX;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {
 	public static class ConversionExtensions
 	{
-		public static Matrix ToSlimDxMatrix(this Matrix3D matrix)
+		public static Matrix ToSharpDXMatrix(this Matrix3D matrix)
 		{
 			return new Matrix
 			{
@@ -63,10 +63,20 @@ namespace Meshellator.Viewer.Framework.Rendering
 			return new Color4(color.A, color.R, color.G, color.B);
 		}
 
-		public static Color4 ToColor4(this Color color)
+		public static Color4 ToColor4(this Nexus.Graphics.Colors.Color color)
 		{
 			ColorF colorF = (ColorF) color;
-			return new Color4(colorF.A, colorF.R, colorF.G, colorF.B);
+			return new Color4(colorF.R, colorF.G, colorF.B, colorF.A);
+		}
+
+		public static ColorBGRA ToColorBGRA(this Nexus.Graphics.Colors.Color color)
+		{
+			return ToColorBGRA((ColorF)color);
+		}
+
+		public static ColorBGRA ToColorBGRA(this ColorF color)
+		{
+			return new ColorBGRA(color.R, color.G, color.B, color.A);
 		}
 	}
 }

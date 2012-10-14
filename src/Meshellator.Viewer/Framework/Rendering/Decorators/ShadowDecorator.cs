@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using Nexus;
+using Nexus.Graphics.Colors;
 using Nexus.Objects3D;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Decorators
 {
@@ -72,7 +73,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 			// Clear the render target to white or all 1's
 			// We set the clear to white since that represents the 
 			// furthest the object could be away
-			_device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, new SlimDX.Color4(1, 1, 1), 1, 0);
+			_device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, Colors.White.ToColorBGRA(), 1, 0);
 
 			model.DrawInternal(renderSettings, decorators);
 
@@ -174,9 +175,9 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 		private void DrawShadowMapToScreen()
 		{
 			const float scale = 0.3f;
-			_shadowMapSprite.Transform = SlimDX.Matrix.Scaling(scale, scale, scale);
+			_shadowMapSprite.Transform = SharpDX.Matrix.Scaling(scale, scale, scale);
 			_shadowMapSprite.Begin(SpriteFlags.None);
-			_shadowMapSprite.Draw(_shadowRenderTarget, new SlimDX.Color4(1, 1, 1, 1));
+			_shadowMapSprite.Draw(_shadowRenderTarget, Colors.White.ToColorBGRA());
 			_shadowMapSprite.End();
 
 			//BaseTexture.ToFile(_shadowRenderTarget, "SavedShadowMap.png", ImageFileFormat.Png);

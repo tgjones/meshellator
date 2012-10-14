@@ -1,10 +1,11 @@
 using Caliburn.Micro;
 using Gemini.Framework.Services;
 using Nexus;
+using Nexus.Graphics.Colors;
 using Nexus.Graphics.Transforms;
 using Nexus.Objects3D;
-using SlimDX;
-using SlimDX.Direct3D9;
+using SharpDX;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {
@@ -53,7 +54,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 
 			IoC.Get<IStatusBar>().Message = "Camera Location: " + renderSettings.ViewMatrix.Translation;
 
-			_device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, new Color4(0.3f, 0.3f, 0.3f), 1.0f, 0);
+			_device.Clear(ClearFlags.Target | ClearFlags.ZBuffer, new ColorF(0.3f, 0.3f, 0.3f).ToColorBGRA(), 1.0f, 0);
 			_device.BeginScene();
 
 			_model.Draw(renderSettings);

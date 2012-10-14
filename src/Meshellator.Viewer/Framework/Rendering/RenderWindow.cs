@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {
@@ -57,7 +57,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 
 			_device.SetRenderTarget(0, _backBufferSurface);
 			_device.DepthStencilSurface = _depthStencilSurface;
-			return _backBufferSurface.ComPointer;
+			return _backBufferSurface.NativePointer;
 		}
 
 		public RenderWindow(int width, int height, Device device)

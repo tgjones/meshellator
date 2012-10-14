@@ -2,7 +2,7 @@ using System.IO;
 using System.Reflection;
 using Caliburn.Micro;
 using Gemini.Framework.Services;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Effects
 {

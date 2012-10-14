@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Decorators
 {
 	internal class FillModeDecorator : DecoratorBase
 	{
 		private readonly Device _device;
-		private SlimDX.Direct3D9.FillMode _fillMode;
+		private SharpDX.Direct3D9.FillMode _fillMode;
 
 		public FillModeDecorator(Device device)
 		{
@@ -28,10 +28,10 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 			switch (settings.Parameters.FillMode)
 			{
 				case FillMode.Solid:
-					_fillMode = SlimDX.Direct3D9.FillMode.Solid;
+					_fillMode = SharpDX.Direct3D9.FillMode.Solid;
 					return true;
 				case FillMode.Wireframe:
-					_fillMode = SlimDX.Direct3D9.FillMode.Wireframe;
+					_fillMode = SharpDX.Direct3D9.FillMode.Wireframe;
 					return true;
 				default:
 					return false;

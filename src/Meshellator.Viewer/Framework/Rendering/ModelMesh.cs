@@ -3,7 +3,7 @@ using Meshellator.Viewer.Framework.Rendering.Decorators;
 using Meshellator.Viewer.Framework.Rendering.Effects;
 using Nexus;
 using Nexus.Graphics.Colors;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {
@@ -82,7 +82,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 			{
 				_effect.BeginPass(i);
 				
-				_device.DrawIndexedPrimitives(
+				_device.DrawIndexedPrimitive(
 					PrimitiveType.TriangleList, 0, 0, _numVertices,
 					0, _primitiveCount);
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Meshellator.Viewer.Framework.Rendering.Decorators;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {

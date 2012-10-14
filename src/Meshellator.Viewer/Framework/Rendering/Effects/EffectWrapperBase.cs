@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Effects
 {
@@ -35,6 +35,11 @@ namespace Meshellator.Viewer.Framework.Rendering.Effects
 		protected BaseTexture GetTexture(string name)
 		{
 			return GetEffectParameter(name).GetTexture();
+		}
+
+		protected void SetValue(string name, bool value)
+		{
+			GetEffectParameter(name).SetValue(value);
 		}
 
 		protected void SetValue<T>(string name, T value)

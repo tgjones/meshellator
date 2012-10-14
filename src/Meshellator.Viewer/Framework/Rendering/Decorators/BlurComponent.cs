@@ -1,7 +1,7 @@
 using Meshellator.Viewer.Framework.Rendering.Effects;
 using Nexus;
 using Nexus.Graphics.Colors;
-using SlimDX.Direct3D9;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering.Decorators
 {
@@ -105,7 +105,7 @@ namespace Meshellator.Viewer.Framework.Rendering.Decorators
 				_effect.BeginPass(0);
 			}
 
-			_sprite.Draw(texture, Colors.White.ToColor4());
+			_sprite.Draw(texture, Colors.White.ToColorBGRA());
 
 			/*Rectangle dest = new Rectangle(0, 0, Dims, Dims);
 			VertexTransformedPositionTexture[] vertices = new VertexTransformedPositionTexture[4];

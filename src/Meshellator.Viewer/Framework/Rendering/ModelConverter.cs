@@ -1,7 +1,7 @@
 using System;
 using Nexus;
-using SlimDX;
-using SlimDX.Direct3D9;
+using SharpDX;
+using SharpDX.Direct3D9;
 
 namespace Meshellator.Viewer.Framework.Rendering
 {
