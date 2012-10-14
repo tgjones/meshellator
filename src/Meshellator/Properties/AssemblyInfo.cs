@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Meshellator")]
-[assembly: AssemblyDescription("3D asset import library for .NET 4.0 and Silverlight 4. Supported formats are Autodesk 3DS and Lightwave OBJ.")]
+[assembly: AssemblyDescription("3D asset import library for .NET 4.0. Supported formats are Autodesk 3DS and Lightwave OBJ.")]
 [assembly: AssemblyCulture("")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM

@@ -2,7 +2,7 @@
 
 ### What is this?
 
-3D asset import library for .NET 4.0 and Silverlight 4. Supported formats are Autodesk 3DS and Lightwave OBJ.
+3D asset import library for .NET 4.0. Supported formats are Autodesk 3DS and Lightwave OBJ.
 
 ### How do I use it?
 
