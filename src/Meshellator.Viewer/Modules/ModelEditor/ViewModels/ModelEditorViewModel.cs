@@ -1,12 +1,13 @@
 using System;
 using Caliburn.Micro;
+using Gemini.Framework;
 using Meshellator.Viewer.Framework.Rendering;
 using Meshellator.Viewer.Framework.Scenes;
 using Meshellator.Viewer.Framework.Services;
 
 namespace Meshellator.Viewer.Modules.ModelEditor.ViewModels
 {
-	public class ModelEditorViewModel : Screen, IModelEditor
+	public class ModelEditorViewModel : Document, IModelEditor
 	{
 		public event EventHandler RenderParametersChanged;
 

@@ -37,7 +37,7 @@ namespace Meshellator.Viewer.Modules.ModelExplorer
 
 		private static IEnumerable<IResult> OpenModelExplorer()
 		{
-			yield return Show.Tool<IModelExplorer>(PaneLocation.Left);
+			yield return Show.Tool<IModelExplorer>();
 		}
 	}
 }

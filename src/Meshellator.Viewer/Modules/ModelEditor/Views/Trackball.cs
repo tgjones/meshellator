@@ -108,7 +108,7 @@ namespace Meshellator.Viewer.Modules.ModelEditor.Views
 
 		private void OnMouseDown(object sender, MouseEventArgs e)
 		{
-			IoC.Get<IOutput>().Append("Mouse down");
+			IoC.Get<IOutput>().AppendLine("Mouse down");
 
 			Mouse.Capture(EventSource, CaptureMode.Element);
 			_previousPosition2D = e.GetPosition(EventSource);
@@ -123,7 +123,7 @@ namespace Meshellator.Viewer.Modules.ModelEditor.Views
 
 		private void OnMouseUp(object sender, MouseEventArgs e)
 		{
-			IoC.Get<IOutput>().Append("Mouse up");
+			IoC.Get<IOutput>().AppendLine("Mouse up");
 			_mouseDown = false;
 			_persistentOrientation = _currentOrientation;
 			Mouse.Capture(EventSource, CaptureMode.None);
@@ -135,7 +135,7 @@ namespace Meshellator.Viewer.Modules.ModelEditor.Views
 
 			if (_mouseDown)
 			{
-				IoC.Get<IOutput>().Append("Mouse drag");
+				IoC.Get<IOutput>().AppendLine("Mouse drag");
 
 				// Prefer tracking to zooming if both buttons are pressed.
 				if (e.LeftButton == MouseButtonState.Pressed)
@@ -155,7 +155,7 @@ namespace Meshellator.Viewer.Modules.ModelEditor.Views
 		{
 			Vector3D currentPosition3D = ProjectToTrackball(EventSource.ActualWidth, EventSource.ActualHeight, currentPosition);
 
-			IoC.Get<IOutput>().Append("New trackball position: " + currentPosition3D);
+			IoC.Get<IOutput>().AppendLine("New trackball position: " + currentPosition3D);
 
 			// Because our sphere is centered at the origin, we may interpret our points as vectors. Doing so it is trivial
 			// to find the axis and angle of rotation using the cross product dot product respectively.

@@ -13,12 +13,12 @@ namespace Meshellator.Viewer.Modules.Output
 
 		public void Error(string message)
 		{
-			_output.Append("Error: " + message);
+			_output.AppendLine("Error: " + message);
 		}
 
 		public void Warn(string message)
 		{
-			_output.Append("Warning: " + message);
+			_output.AppendLine("Warning: " + message);
 		}
 	}
 }
