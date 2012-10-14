@@ -146,9 +146,9 @@
     <Compile Include="Scene.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Importers\3ds\Licence.txt" />
-    <Content Include="Importers\Obj\Licence.txt" />
-    <Content Include="Importers\Ply\Licence.txt" />
+    <None Include="Importers\3ds\Licence.txt" />
+    <None Include="Importers\Obj\Licence.txt" />
+    <None Include="Importers\Ply\Licence.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
