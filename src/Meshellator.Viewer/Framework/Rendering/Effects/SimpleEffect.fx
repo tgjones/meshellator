@@ -9,6 +9,17 @@ float3 LightDirection;
 float3 LightDiffuseColor = float3(1, 0.9607844, 0.8078432);
 float3 LightSpecularColor = float3(1, 0.9607844, 0.8078432);
 
+texture DiffuseTexture;
+sampler DiffuseTextureSampler = sampler_state
+{
+    Texture = <DiffuseTexture>;
+    MinFilter = LINEAR;
+    MagFilter = LINEAR;
+    MipFilter = LINEAR;
+    AddressU = Clamp;
+    AddressV = Clamp;
+};
+
 float3 DiffuseColor = float3(1, 0, 0);
 float3 SpecularColor = float3(1, 1, 1);
 float SpecularPower = 8;
@@ -140,7 +151,9 @@ float4 PS(PixelShaderInput input) : COLOR0
 
 	// Lambertian.
 	float diffuseFactor = max(0, dot(LightDirection, normal));
-	float3 diffuse = LightDiffuseColor * DiffuseColor * diffuseFactor;
+	float3 diffuseTexture = tex2D(DiffuseTextureSampler, input.tex);
+	float3 diffuseColor = DiffuseColor + diffuseTexture;
+	float3 diffuse = LightDiffuseColor * diffuseColor * diffuseFactor;
 	
 	// Phong.
 	float3 halfVector = normalize(LightDirection + viewDirection);

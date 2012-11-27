@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Nexus;
 using SharpDX;
 using SharpDX.Direct3D9;
@@ -12,7 +13,7 @@ namespace Meshellator.Viewer.Framework.Rendering
 			VertexDeclaration vertexDeclaration = new VertexDeclaration(device,
 				VertexPositionNormalTexture.VertexElements);
 			Model result = new Model(scene, device, vertexDeclaration);
-			foreach (Mesh mesh in scene.Meshes)
+			foreach (Mesh mesh in scene.Meshes.Where(x => x.Positions.Any()))
 			{
 				VertexBuffer vertexBuffer = new VertexBuffer(device,
 					mesh.Positions.Count * VertexPositionNormalTexture.SizeInBytes,
@@ -22,7 +23,9 @@ namespace Meshellator.Viewer.Framework.Rendering
 					LockFlags.None);
 				VertexPositionNormalTexture[] vertices = new VertexPositionNormalTexture[mesh.Positions.Count];
 				for (int i = 0; i < vertices.Length; ++i)
-					vertices[i] = new VertexPositionNormalTexture(mesh.Positions[i], (mesh.Normals.Count > i) ? mesh.Normals[i] : Vector3D.Zero, Point2D.Zero);
+					vertices[i] = new VertexPositionNormalTexture(mesh.Positions[i],
+						(mesh.Normals.Count > i) ? mesh.Normals[i] : Vector3D.Zero,
+						(mesh.TextureCoordinates.Count > i) ? mesh.TextureCoordinates[i].Xy : Point2D.Zero);
 				vertexDataStream.WriteRange(vertices);
 				vertexBuffer.Unlock();
 

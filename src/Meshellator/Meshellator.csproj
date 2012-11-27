@@ -70,6 +70,7 @@
     <Compile Include="Importers\3ds\SplineKey3ds.cs" />
     <Compile Include="Importers\3ds\TexCoords3ds.cs" />
     <Compile Include="Importers\3ds\TextDecode3ds.cs" />
+    <Compile Include="Importers\3ds\Texture3ds.cs" />
     <Compile Include="Importers\3ds\TextureMappingMode3ds.cs" />
     <Compile Include="Importers\3ds\Track3ds.cs" />
     <Compile Include="Importers\3ds\Utils3ds.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Primitives\TeapotTessellator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="TextureMapMode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Importers\3ds\Licence.txt" />

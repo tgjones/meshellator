@@ -55,6 +55,8 @@ namespace Meshellator.Viewer.Framework.Rendering
 				SpecularPower = material.Shininess,
 				Alpha = material.Transparency
 			};
+			if (!string.IsNullOrEmpty(material.DiffuseTextureName))
+				_effect.DiffuseTexture = Texture.FromFile(device, material.DiffuseTextureName, Usage.None, Pool.Default);
 			_effect.CurrentTechnique = "RenderScene";
 			Opaque = (material.Transparency == 1.0f);
 		}

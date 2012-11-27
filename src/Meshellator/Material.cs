@@ -12,6 +12,7 @@ namespace Meshellator
 		public ColorRgbF DiffuseColor { get; set; }
 		public ColorRgbF SpecularColor { get; set; }
 
+		public TextureMapMode DiffuseTextureMapMode { get; set; }
 		public string DiffuseTextureName { get; set; }
 		public string SpecularTextureName { get; set; }
 

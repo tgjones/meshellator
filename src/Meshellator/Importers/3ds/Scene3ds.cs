@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Nexus;
 
 namespace Meshellator.Importers.Autodesk3ds
 {
@@ -507,11 +508,8 @@ namespace Meshellator.Importers.Autodesk3ds
 					case CHUNK_MAT_DIFFUSE:
 						mat.mDiffuse = readColor(head.length - 6);
 						break;
-					case CHUNK_MAT_MAPNAME:
-						mat.mMapName = ReadName();
-						break;
 					case CHUNK_MAT_MAP:
-						read_MAT_ENTRY(head.length - 6);
+						mat.DiffuseTexture = ParseTextureChunk(head.length - 6);
 						break;
 					//case CHUNK_MAT_SHININESS:
 					//mat._shininess = readFloat();
@@ -530,6 +528,76 @@ namespace Meshellator.Importers.Autodesk3ds
 			{
 				mDecode.leave();
 			}
+		}
+
+		private Texture ParseTextureChunk(int chunk_len)
+		{
+			long chunk_end = filePos() + chunk_len;
+
+			Texture result = new Texture();
+
+			if (mDecode != null)
+			{
+				mDecode.enter();
+			}
+
+			while (filePos() < chunk_end)
+			{
+				Head head = read_HEAD();
+				switch (head.id)
+				{
+					case CHUNK_MAT_MAPNAME:
+						result.MapName = ReadName();
+						break;
+					case CHUNK_MAT_MAP_USCALE:
+						// Texture coordinate scaling in the U direction
+						result.ScaleU = ReadFloat();
+						break;
+					case CHUNK_MAT_MAP_VSCALE:
+						// Texture coordinate scaling in the V direction
+						result.ScaleV = ReadFloat();
+						break;
+					case CHUNK_MAT_MAP_UOFFSET:
+						// Texture coordinate offset in the U direction
+						result.OffsetU = -ReadFloat();
+						break;
+
+					case CHUNK_MAT_MAP_VOFFSET:
+						// Texture coordinate offset in the V direction
+						result.OffsetV = ReadFloat();
+						break;
+
+					case CHUNK_MAT_MAP_ANG:
+						// Texture coordinate rotation, CCW in DEGREES
+						result.Rotation = -MathUtility.ToRadians((ReadFloat()));
+						break;
+
+					case CHUNK_MAT_MAP_TILING:
+					{
+						int iFlags = ReadUnsignedShort();
+
+						// Get the mapping mode (for both axes)
+						if ((iFlags & 0x2u) != 0)
+							result.MapMode = TextureMapMode.Mirror;
+						else if ((iFlags & 0x10u) != 0)
+							result.MapMode = TextureMapMode.Decal;
+						else // wrapping in all remaining cases
+							result.MapMode = TextureMapMode.Wrap;
+
+						break;
+					}
+					default:
+						SkipChunk(head.length - 6);
+						break;
+				}
+			}
+
+			if (mDecode != null)
+			{
+				mDecode.leave();
+			}
+
+			return result;
 		}
 
 		private void read_NAMED_OBJECT(int chunk_len)
@@ -1618,6 +1686,26 @@ namespace Meshellator.Importers.Autodesk3ds
 						CHUNK_MAT_TRANSPARENCY = 0xA050,
 						CHUNK_MAT_MAP = 0xA200,
 						CHUNK_MAT_MAPNAME = 0xA300,
+
+						// Scaling in U/V direction.
+			// (need to gen separate UV coordinate set 
+			// and do this by hand)
+			CHUNK_MAT_MAP_USCALE = 0xA354,
+			CHUNK_MAT_MAP_VSCALE = 0xA356,
+
+			// Translation in U/V direction.
+			// (need to gen separate UV coordinate set 
+			// and do this by hand)
+			CHUNK_MAT_MAP_UOFFSET = 0xA358,
+			CHUNK_MAT_MAP_VOFFSET = 0xA35a,
+
+			// UV-coordinates rotation around the z-axis
+			// Assumed to be in radians.
+			CHUNK_MAT_MAP_ANG = 0xA35C,
+
+			// Tiling flags for 3DS files
+			CHUNK_MAT_MAP_TILING = 0xa351,
+
 					CHUNK_NAMED_OBJECT = 0x4000,
 						CHUNK_N_TRI_OBJECT = 0x4100,
 							CHUNK_POINT_ARRAY = 0x4110,

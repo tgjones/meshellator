@@ -10,7 +10,7 @@ namespace Meshellator.Importers.Autodesk3ds
 		internal string mName = "";
 
 		// Material Filename
-		internal string mMapName = "";
+		public Texture DiffuseTexture { get; internal set; }
 
 		// Material diffuse color
 		internal Color3ds mDiffuse = new Color3ds();
@@ -33,16 +33,6 @@ namespace Meshellator.Importers.Autodesk3ds
 		public string name()
 		{
 			return mName;
-		}
-
-		/**
-		 * Get material filename.
-		 *
-		 * @return material filename
-		 */
-		public string mapName()
-		{
-			return mMapName;
 		}
 
 		/**

@@ -50,6 +50,12 @@ namespace Meshellator.Viewer.Framework.Rendering.Effects
 			set { SetValue("AmbientLightColor", value); }
 		}
 
+		public BaseTexture DiffuseTexture
+		{
+			get { return GetTexture("DiffuseTexture"); }
+			set { SetTexture("DiffuseTexture", value); }
+		}
+
 		public ColorRgbF DiffuseColor
 		{
 			get { return GetValue<ColorRgbF>("DiffuseColor"); }

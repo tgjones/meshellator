@@ -10,7 +10,7 @@ namespace Meshellator.Importers.Autodesk3ds
 	public class Autodesk3dsImporter : AssetImporterBase
 	{
 		private const bool FLIPYZ = false;
-		private const bool FLIPV = false;
+		private const bool FLIPV = true;
 
 		public override Scene ImportFile(FileStream fileStream, string fileName)
 		{
@@ -42,6 +42,8 @@ namespace Meshellator.Importers.Autodesk3ds
 					SpecularColor = material3ds.specular().ToColorRgbF(),
 					Transparency = material3ds.transparency()
 				};
+				if (material3ds.DiffuseTexture != null)
+					material.DiffuseTextureName = Path.Combine(Path.GetDirectoryName(fileName), material3ds.DiffuseTexture.MapName);
 				if ((int) material3ds._shininess != 0)
 					material.Shininess = (int) material3ds._shininess;
 				result.Materials.Add(material);
