@@ -71,12 +71,13 @@ namespace Meshellator.Importers.Obj
 						mesh.Normals.Add(new Vector3D(n.X, n.Y, n.Z));
 					}
 
-					// Copy normals.
+					// Copy texture coordinates.
 					foreach (int textureIndex in f.TextureIndices)
-					{
-						TextureCoordinate tc = wavefrontObject.Textures[textureIndex];
-						mesh.TextureCoordinates.Add(new Point3D(tc.U, tc.V, tc.W));
-					}
+						if (wavefrontObject.Textures.Count > textureIndex)
+						{
+							TextureCoordinate tc = wavefrontObject.Textures[textureIndex];
+							mesh.TextureCoordinates.Add(new Point3D(tc.U, tc.V, tc.W));
+						}
 
 					switch (f.Type)
 					{
